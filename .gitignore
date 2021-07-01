@@ -2,3 +2,4 @@ node_modules
 contracts/build
 /data
 /build
+/generated
