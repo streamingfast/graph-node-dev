@@ -2,25 +2,25 @@ specVersion: 0.0.2
 description: Tracking TST token transfers on Ropsten network
 repository: git@github.com:dfuse-io/graph-dev-priv.git
 schema:
-  file: ./transfer.graphql
+  file: transfer.graphql
 dataSources:
   - kind: ethereum/contract
     name: Factory
     network: ropsten
     source:
-      address: '0x722dd3F80BAC40c951b51BdD28Dd19d435762180'
+      address: "0x722dd3F80BAC40c951b51BdD28Dd19d435762180"
       abi: Factory
       startBlock: 10548625
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
-      file: ./src/factory.ts
+      file: Factory/Factory.wasm
       entities:
         - Payment
       abis:
         - name: Factory
-          file: ./abis/Factory.json
+          file: Factory/abis/Factory.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
