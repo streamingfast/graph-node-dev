@@ -1,0 +1,37 @@
+{
+    "name": "streamingfast-subgraph",
+    "description": "StreamingFast Subgraph",
+    "version": "0.0.1",
+    "repository": "git@github.com:pancakeswap/pancake-subgraph.git",
+    "author": "StreamingFast",
+    "license": "MIT",
+    "scripts": {
+      "codegen:transfer": "graph codegen subgraphs/transfer.yaml",
+      "build:transfer": "graph build subgraphs/transfer.yaml",
+      "create:transfer": "graph create streamingfast/transfer --node http://127.0.0.1:9000",
+      "deploy:transfer": "graph deploy --node http://127.0.0.1:9000 --ipfs http://127.0.0.1:5001 streamingfast/transfer subgraphs/transfer.yaml",
+      "format:check": "prettier --check '*/**/*.{js,ts}'",
+      "format:write": "prettier --write '*/**/*.{js,ts}'",
+      "lint": "eslint '*/**/*.{js,ts}'"
+    },
+    "husky": {
+      "hooks": {
+        "pre-commit": "yarn format:check",
+        "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      }
+    },
+    "devDependencies": {
+      "@commitlint/cli": "^12.1.4",
+      "@commitlint/config-conventional": "^12.1.4",
+      "@graphprotocol/graph-cli": "^0.20.0",
+      "@graphprotocol/graph-ts": "^0.20.0",
+      "@typescript-eslint/eslint-plugin": "^4.25.0",
+      "@typescript-eslint/parser": "^4.25.0",
+      "eslint": "^7.27.0",
+      "eslint-config-prettier": "^8.3.0",
+      "husky": "^4.3.8",
+      "prettier": "^2.3.0",
+      "typescript": "^4.3.2"
+    }
+  }
+  

@@ -1,0 +1,7 @@
+type Transfer @entity {
+    id: ID!
+
+    to: String!
+    from: String!
+    value: BigInt!
+}
