@@ -6,10 +6,10 @@
     "author": "StreamingFast",
     "license": "MIT",
     "scripts": {
-      "codegen:transfer": "graph codegen subgraphs/transfer.yaml",
-      "build:transfer": "graph build subgraphs/transfer.yaml",
-      "create:transfer": "graph create streamingfast/transfer --node http://127.0.0.1:9000",
-      "deploy:transfer": "graph deploy --node http://127.0.0.1:9000 --ipfs http://127.0.0.1:5001 streamingfast/transfer subgraphs/transfer.yaml",
+      "codegen": "graph codegen subgraphs/transfer.yaml",
+      "build": "graph build subgraphs/transfer.yaml",
+      "create": "graph create streamingfast/transfer --node http://127.0.0.1:8020",
+      "deploy": "graph deploy --node http://127.0.0.1:8020 --ipfs http://127.0.0.1:5001 streamingfast/transfer subgraphs/transfer.yaml",
       "format:check": "prettier --check '*/**/*.{js,ts}'",
       "format:write": "prettier --write '*/**/*.{js,ts}'",
       "lint": "eslint '*/**/*.{js,ts}'"
