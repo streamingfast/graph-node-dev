@@ -6,6 +6,7 @@
     "author": "StreamingFast",
     "license": "MIT",
     "scripts": {
+      "toute": "graph codegen subgraphs/transfer.yaml && graph build subgraphs/transfer.yaml && graph create streamingfast/transfer --node http://127.0.0.1:8020 && graph deploy --node http://127.0.0.1:8020 --ipfs http://127.0.0.1:5001 streamingfast/transfer subgraphs/transfer.yaml",
       "codegen": "graph codegen subgraphs/transfer.yaml",
       "build": "graph build subgraphs/transfer.yaml",
       "create": "graph create streamingfast/transfer --node http://127.0.0.1:8020",
