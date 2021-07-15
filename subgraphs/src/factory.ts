@@ -8,8 +8,6 @@ export function handleTransfer(event: Transfer): void {
     payment.from = event.transaction.from.toHex();
     payment.to = event.transaction.to.toHex();
     payment.value = event.transaction.value;
-
-    if (event.block.number.toI32() < 10548625 + 10000) {
-        payment.save();
-    }
+    
+    payment.save();
 }
