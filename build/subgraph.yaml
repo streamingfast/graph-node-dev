@@ -1,14 +1,14 @@
 specVersion: 0.0.2
-description: Tracking TST token transfers on Ropsten network
+description: Tracking BTT token transfers on ETH mainnet network
 repository: git@github.com:dfuse-io/graph-dev-priv.git
 schema:
   file: transfer.graphql
 dataSources:
   - kind: ethereum/contract
     name: Factory
-    network: ropsten
+    network: mainnet
     source:
-      address: "0x722dd3F80BAC40c951b51BdD28Dd19d435762180"
+      address: "0xe83cccfabd4ed148903bf36d4283ee7c8b3494d1"
       abi: Factory
       startBlock: 10548625
     mapping:
