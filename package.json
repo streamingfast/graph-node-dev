@@ -1,26 +1,10 @@
 {
-    "name": "streamingfast-subgraph",
-    "description": "StreamingFast Subgraph",
+    "name": "graph-dev-priv",
+    "description": "Developer centric repository to develop on graph-node project",
     "version": "0.0.1",
-    "repository": "git@github.com:pancakeswap/pancake-subgraph.git",
+    "repository": "git@github.com:streamingfast/graph-dev-priv.git",
     "author": "StreamingFast",
     "license": "MIT",
-    "scripts": {
-      "toute": "graph codegen subgraphs/transfer.yaml && graph build subgraphs/transfer.yaml && graph create streamingfast/transfer --node http://127.0.0.1:8020 && graph deploy --node http://127.0.0.1:8020 --ipfs http://127.0.0.1:5001 streamingfast/transfer subgraphs/transfer.yaml",
-      "codegen": "graph codegen subgraphs/transfer.yaml",
-      "build": "graph build subgraphs/transfer.yaml",
-      "create": "graph create streamingfast/transfer --node http://127.0.0.1:8020",
-      "deploy": "graph deploy --node http://127.0.0.1:8020 --ipfs http://127.0.0.1:5001 streamingfast/transfer subgraphs/transfer.yaml",
-      "format:check": "prettier --check '*/**/*.{js,ts}'",
-      "format:write": "prettier --write '*/**/*.{js,ts}'",
-      "lint": "eslint '*/**/*.{js,ts}'"
-    },
-    "husky": {
-      "hooks": {
-        "pre-commit": "yarn format:check",
-        "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-      }
-    },
     "devDependencies": {
       "@commitlint/cli": "^12.1.4",
       "@commitlint/config-conventional": "^12.1.4",
@@ -35,4 +19,3 @@
       "typescript": "^4.3.2"
     }
   }
-  

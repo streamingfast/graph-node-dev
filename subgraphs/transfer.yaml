@@ -1,16 +1,16 @@
 specVersion: 0.0.2
-description: Tracking BTT token transfers on ETH mainnet network
+description: Tracking WETH token transfers on ETH Ropsten network
 repository: git@github.com:dfuse-io/graph-dev-priv.git
 schema:
   file: ./transfer.graphql
 dataSources:
   - kind: ethereum/contract
     name: Factory
-    network: mainnet
+    network: ropsten
     source:
-      address: '0xe83cccfabd4ed148903bf36d4283ee7c8b3494d1'
+      address: '0xc778417E063141139Fce010982780140Aa0cD5Ab'
       abi: Factory
-      startBlock: 12295499
+      startBlock: 10662188
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4

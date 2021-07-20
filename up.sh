@@ -20,7 +20,7 @@ main() {
 
   if [[ -d "./data" && $clean == true ]]; then
     echo "Cleaning data directory"
-    echo rm -rf ./data 1> /dev/null
+    rm -rf ./data 1> /dev/null
   fi
 
   prepare
