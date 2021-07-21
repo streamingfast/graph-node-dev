@@ -22,13 +22,13 @@ Then we will open different terminals to perform certain actions, most of them a
 tasks.
 
 ```bash
-# In first terminal
+# In first terminal, start the docker containers for postgres and ipfs by running the following
 ./up.sh # Flag -c can be added to clean the persistent folders prior running Postgres, IPFS and any similar required services
 ```
 
 ```bash
-# In another terminal
-kc -n eth-ropsten port-forward svc/peering-v3 8545
+# In another terminal, set up the port-forward to the peering service
+./pf.sh 
 ```
 
 **Note** Required only if developing Firehose services, which is the case here.
@@ -40,7 +40,7 @@ GRAPH_LOG=trace cargo run -- --config devel/config-dev-firehose.toml --ipfs "loc
 ```
 
 ```bash
-# Yet again in another terminal
+# Yet again in another terminal, deploy the subgraph to your local stack
 ./deploy.sh transfer # Flag -c can be added to remove the previous deployment if it exists
 ```
 
