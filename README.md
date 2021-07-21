@@ -1,7 +1,7 @@
 ## The Graph Node - Development Repository
 
 The aim of this repository is to contain some scripts and various configurations files
-to effectively develop `graph-node` project with appropriate datas.
+to effectively develop a `graph-node` project with appropriate data.
 
 Mainly it consists of:
 
@@ -11,7 +11,7 @@ Mainly it consists of:
 
 ### Quick Start
 
-If it's the first time you clone the repository, ensure that Docker is running and install
+If this is the first time you clone the repository, ensure that Docker is running and install
 the required Node.js dependencies:
 
 ```bash
@@ -46,7 +46,7 @@ GRAPH_LOG=trace cargo run -- --config devel/config-dev-firehose.toml --ipfs "loc
 
 ### Content of `devel/config-dev-firehose.toml`
 
-The file assumed the dependencies are the one provided by `docker compose up` (fired through `up.sh` invocation).
+The file assumed the dependencies are the one provided by `docker-compose up` (fired through `up.sh` invocation).
 
 ```
 [general]
