@@ -36,7 +36,7 @@ tasks.
 ```bash
 # Again in another terminal
 cd ~/work/graph-node # Changed accordingly to where your `graph-node` project is
-GRAPH_LOG=trace cargo run -- --config devel/config-dev-firehose.toml --ipfs "localhost:5001"
+GRAPH_LOG=trace cargo run -- --config config-firehose.toml --ipfs "localhost:5001"
 ```
 
 ```bash
@@ -44,13 +44,12 @@ GRAPH_LOG=trace cargo run -- --config devel/config-dev-firehose.toml --ipfs "loc
 ./deploy.sh transfer # Flag -c can be added to remove the previous deployment if it exists
 ```
 
-### Content of `devel/config-dev-firehose.toml`
+### Content of `config-firehose.toml`
 
 The file assumed the dependencies are the one provided by `docker-compose up` (fired through `up.sh` invocation).
 
 ```
 [general]
-query_only = ".*"
 
 [store]
 [store.primary]
@@ -63,8 +62,35 @@ ingestor = "block_ingestor_node"
 [chains.ropsten]
 shard = "primary"
 provider = [
-  { label = "firehose", url = "https://ropsten.streamingfast.io", details = { type = "Firehose" }, features = [] },
-  { label = "peering", url = "http://localhost:8545", features = [] },
+  { label = "firehose", details = { type = "firehose", url = "https://ropsten.streamingfast.io"} },
+  { label = "rpc", details = { type = "web3", transport = "rpc", url = "https://ropsten.streamingfast.io", features = [] } },
+]
+
+[deployment]
+[[deployment.rule]]
+shard = "primary"
+indexers = [ "default" ]
+```
+
+### Content of `config-standard.toml`
+
+The file assumed the dependencies are the one provided by `docker compose up` (fired through `up.sh` invocation).
+
+```
+[general]
+
+[store]
+[store.primary]
+connection = "postgresql://graph-node:let-me-in@localhost:5432/graph-node"
+weight = 1
+pool_size = 10
+
+[chains]
+ingestor = "block_ingestor_node"
+[chains.ropsten]
+shard = "primary"
+provider = [
+  { label = "peering", transport = "rpc", url = "http://localhost:8545", features = [] },
 ]
 
 [deployment]
