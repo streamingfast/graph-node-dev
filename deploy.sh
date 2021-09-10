@@ -4,8 +4,9 @@ set -e
 
 ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+source "$ROOT/library.sh"
+
 graph="node_modules/.bin/graph"
-graphman="$GRAPHMAN"
 clean=
 
 main() {
@@ -20,44 +21,33 @@ main() {
   done
   shift $((OPTIND-1))
 
-  name="$1"; shift
-  if [[ ! -f "./subgraphs/$name.yaml" ]]; then
+  rm -rf build
+
+  path="$1"; shift
+  if [[ ! -f "./$path" ]]; then
     usage_error "Invalid subgraph name, valid names are: `subgraphs`"
   fi
 
   if [[ $clean == true ]]; then
-    if [[ ! -f "$GRAPHMAN" ]]; then
-      echo "Cleaning previous deployment requires that \$GRAPHMAN environment variable points to 'graphman' CLI tool (current value is '$GRAPHMAN')"
-      exit 1
-    fi
-
-    $graphman --config graph-node.config.toml remove "sf/$name"
+    graphman_remove "$path"
   fi
 
-  deploy "$name"
+  deploy "$path"
 }
 
 deploy() {
-  name="$1"
+  path="$1"
 
-  $graph codegen "subgraphs/$name.yaml"
-  $graph build "subgraphs/$name.yaml"
+  chain=`chain $path`
+  name=`name $path`
+
+  if [[ "$chain" != "near-mainnet" ]]; then
+    $graph codegen -o "subgraphs/$chain/$name/generated" "$path"
+  fi
+
+  $graph build "$path"
   $graph create "sf/$name" --node http://127.0.0.1:8020
-  $graph deploy --node http://127.0.0.1:8020 --ipfs http://127.0.0.1:5001 "sf/$name" "subgraphs/$name.yaml"
-}
-
-subgraphs() {
-  echo subgraphs/*.yaml | sed s,subgraphs/,,g | sed s'/.yaml/,/'g | sed -E s'/,$//'
-}
-
-usage_error() {
-  message="$1"
-  exit_code="$2"
-
-  echo "ERROR: $message"
-  echo ""
-  usage
-  exit ${exit_code:-1}
+  $graph deploy --node http://127.0.0.1:8020 --ipfs http://127.0.0.1:5001 "sf/$name" "$path"
 }
 
 usage() {

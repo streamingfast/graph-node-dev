@@ -1,5 +1,5 @@
-import { Transfer } from "../../generated/Factory/Factory"
-import { Payment } from "../../generated/schema"
+import { Transfer } from "../generated/transfer/transfer"
+import { Payment } from "../generated/schema"
 
 export function handleTransfer(event: Transfer): void {
   let payment = new Payment(event.block.number.toString())

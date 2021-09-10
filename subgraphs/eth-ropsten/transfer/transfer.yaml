@@ -2,25 +2,25 @@ specVersion: 0.0.2
 description: Tracking WETH token transfers on ETH Ropsten network
 repository: git@github.com:dfuse-io/graph-dev-priv.git
 schema:
-  file: ./transfer.graphql
+  file: ./gql/transfer.graphql
 dataSources:
   - kind: ethereum/contract
     name: Factory
     network: ropsten
     source:
       address: '0xc778417E063141139Fce010982780140Aa0cD5Ab'
-      abi: Factory
+      abi: transfer
       startBlock: 10662188
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
-      file: ./src/factory.ts
+      file: ./src/transfer.ts
       entities:
         - Payment
       abis:
-        - name: Factory
-          file: ./abis/Factory.json
+        - name: transfer
+          file: ./abis/transfer_erc20.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
