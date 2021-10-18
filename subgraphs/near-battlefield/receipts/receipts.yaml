@@ -1,8 +1,8 @@
 specVersion: 0.0.2
-description: NEAR Battlefield Blocks Indexing
+description: NEAR Battlefield Receipts Indexing
 repository: git@github.com:streamingfast/graph-node-dev.git
 schema:
-  file: ./gql/blocks.graphql
+  file: ./gql/receipts.graphql
 dataSources:
   - kind: near
     name: blocks
@@ -15,8 +15,7 @@ dataSources:
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       file: ./src/blocks.ts
-      abis: []
       entities:
-        - BlockEvent
-      blockHandlers:
-        - handler: handleBlock
+        - ReceiptEvent
+      receiptHandlers:
+        - handler: handleReceipt

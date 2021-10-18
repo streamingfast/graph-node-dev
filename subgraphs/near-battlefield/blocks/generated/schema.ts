@@ -6,7 +6,6 @@ import {
   Value,
   ValueKind,
   store,
-  Address,
   Bytes,
   BigInt,
   BigDecimal
@@ -16,26 +15,30 @@ export class BlockEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
+
+    this.set("number", Value.fromBigInt(BigInt.zero()));
   }
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save BlockEvent entity without an ID");
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save BlockEvent entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("BlockEvent", id.toString(), this);
+    assert(id != null, "Cannot save BlockEvent entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        "Cannot save BlockEvent entity with non-string ID. " +
+          'Considering using .toHex() to convert the "id" to a string.'
+      );
+      store.set("BlockEvent", id.toString(), this);
+    }
   }
 
   static load(id: string): BlockEvent | null {
-    return store.get("BlockEvent", id) as BlockEvent | null;
+    return changetype<BlockEvent | null>(store.get("BlockEvent", id));
   }
 
   get id(): string {
     let value = this.get("id");
-    return value.toString();
+    return value!.toString();
   }
 
   set id(value: string) {
@@ -44,7 +47,7 @@ export class BlockEvent extends Entity {
 
   get number(): BigInt {
     let value = this.get("number");
-    return value.toBigInt();
+    return value!.toBigInt();
   }
 
   set number(value: BigInt) {
