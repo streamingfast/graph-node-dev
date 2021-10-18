@@ -10,8 +10,9 @@ pool_size = 10
 ingestor = "block_ingestor_node"
 [chains.near-battlefield]
 shard = "primary"
+kind = "Near"
 provider = [
-  { label = "main-battlefield", details = { type = "firehose", url = "http://localhost:13042" }},
+  { label = "main-battlefield", details = { type = "firehose", url = "http://localhost:15042" }},
 ]
 
 [deployment]

@@ -8,7 +8,7 @@ pool_size = 10
 
 [chains]
 ingestor = "block_ingestor_node"
-[chains.ropsten]
+[chains.eth-ropsten]
 shard = "primary"
 provider = [
   { label = "firehose", details = { type = "firehose", url = "https://ropsten.streamingfast.io", token = "<fill_me>" }},

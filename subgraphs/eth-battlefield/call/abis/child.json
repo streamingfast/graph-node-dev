@@ -1,0 +1,74 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": false, "internalType": "uint256", "name": "gas", "type": "uint256" },
+      { "indexed": false, "internalType": "address", "name": "sender", "type": "address" }
+    ],
+    "name": "eventGasLeft",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "assertFailure",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "emptyCallForLowestGas",
+    "outputs": [],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "address payable", "name": "to", "type": "address" }],
+    "name": "failNativeTransfer",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "address payable", "name": "to", "type": "address" }],
+    "name": "nativeTransfer",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "address", "name": "grandchild", "type": "address" }],
+    "name": "nestedEmptyCallForLowestGas",
+    "outputs": [],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "grandchild", "type": "address" },
+      { "internalType": "uint256", "name": "_callerGas", "type": "uint256" },
+      { "internalType": "uint256", "name": "_callerGasLeft", "type": "uint256" }
+    ],
+    "name": "nestedRecordGasLeft",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_callerGas", "type": "uint256" },
+      { "internalType": "uint256", "name": "_callerGasLeft", "type": "uint256" }
+    ],
+    "name": "recordGasLeft",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "revertFailure",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

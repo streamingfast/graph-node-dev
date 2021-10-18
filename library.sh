@@ -27,6 +27,8 @@ graphman_remove() {
   check_graphman
 
   $GRAPHMAN --config "$ROOT/config/graphman.toml" remove "sf/`name $1`"
+  $GRAPHMAN --config "$ROOT/config/graphman.toml" unused record
+  $GRAPHMAN --config "$ROOT/config/graphman.toml" unused remove
 }
 
 check_graphman() {

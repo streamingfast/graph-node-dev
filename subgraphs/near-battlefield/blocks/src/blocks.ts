@@ -1,9 +1,9 @@
-import { near } from "./near"
-import { BlockEvent } from "./generated"
+import { near } from "@graphprotocol/graph-ts/chain/near"
 
 export function handleBlock(block: near.Block): void {
-  let event = new BlockEvent(block.hash.toHexString())
-  event.number = block.number
+  const header = block.header
+  let event = new BlockEvent(header.hash.toHexString())
+  event.number = header.height
 
   event.save()
 }

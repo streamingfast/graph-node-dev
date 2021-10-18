@@ -1,12 +1,12 @@
 specVersion: 0.0.2
 description: Tracking WETH token transfers on ETH Ropsten network
-repository: git@github.com:dfuse-io/graph-dev-priv.git
+repository: https://github.com/streamingfast/graph-node-dev.git
 schema:
   file: ./gql/transfer.graphql
 dataSources:
   - kind: ethereum/contract
     name: Factory
-    network: ropsten
+    network: eth-ropsten
     source:
       address: '0xc778417E063141139Fce010982780140Aa0cD5Ab'
       abi: transfer
