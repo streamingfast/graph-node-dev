@@ -2,15 +2,15 @@
 ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 chain() {
-  printf $1 | sed s,subgraphs/,, | sed -E s,/[a-zA-Z0-9-]+/[a-zA-Z0-9-]+\.yaml$,,
+  printf $1 | sed s,subgraphs/,, | sed -E s,/[_a-zA-Z0-9-]+/[_a-zA-Z0-9-]+\.yaml$,,
 }
 
 name() {
-  printf $1 | sed s,subgraphs/,, | sed -E s,/[a-zA-Z0-9-]+\.yaml$,, | sed -E s,^[a-zA-Z0-9-]+/,,
+  printf $1 | sed s,subgraphs/,, | sed -E s,/[_a-zA-Z0-9-]+\.yaml$,, | sed -E s,^[_a-zA-Z0-9-]+/,,
 }
 
 subgraphs() {
-   find subgraphs -type f -name "*.yaml" | tr "\n" " " | sed -E s'/, $//' | sed -E s,^[a-zA-Z0-9-]+/,,
+   find subgraphs -type f -name "*.yaml" | tr "\n" " " | sed -E s'/, $//' | sed -E s,^[_a-zA-Z0-9-]+/,,
 }
 
 usage_error() {

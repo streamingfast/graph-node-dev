@@ -10,8 +10,16 @@ pool_size = 10
 ingestor = "block_ingestor_node"
 [chains.near-mainnet]
 shard = "primary"
+protocol = "near"
 provider = [
-  { label = "standard", details = { type = "firehose", url = "https://mainnet.near.streamingfast.io" }},
+  { label = "near-mainnet", details = { type = "firehose", url = "https://mainnet.near.streamingfast.io" }},
+]
+
+[chains.near-battlefield]
+shard = "primary"
+protocol = "near"
+provider = [
+  { label = "near-battlefield", details = { type = "firehose", url = "http://localhost:15042" }},
 ]
 
 [deployment]

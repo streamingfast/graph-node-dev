@@ -1,20 +1,20 @@
 specVersion: 0.0.2
-description: NEAR Battlefield Receipts Indexing
+description: NEAR Receipts Indexing
 repository: git@github.com:streamingfast/graph-node-dev.git
 schema:
   file: ./gql/receipts.graphql
 dataSources:
   - kind: near
-    name: blocks
-    network: near-battlefield
+    name: receipts
+    network: near-mainnet
     source:
-      address: '0x0000000000000000000000000000000000000000'
-      abi: ''
+      account: 'aurora'
+      startBlock: 50754403
     mapping:
-      kind: near/blocks
+      kind: near/receipts
       apiVersion: 0.0.5
       language: wasm/assemblyscript
-      file: ./src/blocks.ts
+      file: ./src/receipts.ts
       entities:
         - ReceiptEvent
       receiptHandlers:

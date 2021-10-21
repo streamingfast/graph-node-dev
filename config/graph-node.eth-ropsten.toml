@@ -10,6 +10,7 @@ pool_size = 10
 ingestor = "block_ingestor_node"
 [chains.eth-ropsten]
 shard = "primary"
+protocol = "ethereum"
 provider = [
   { label = "firehose", details = { type = "firehose", url = "https://ropsten.streamingfast.io", token = "<fill_me>" }},
   { label = "peering", url = "http://localhost:8545", features = [] },

@@ -1,16 +1,16 @@
 specVersion: 0.0.2
-description: NEAR Mainnet Blocks Indexing
-repository: git@github.com:streamingast/graph-dev-priv.git
+description: NEAR Blocks Indexing
+repository: git@github.com:streamingfast/graph-node-dev.git
 schema:
   file: ./gql/blocks.graphql
 dataSources:
-  - kind: near/blocks
+  - kind: near
     name: blocks
     network: near-mainnet
     source:
-      address: '0x0000000000000000000000000000000000000000'
+      address: 'battlefield.near'
       abi: ''
-      startBlock: 48000000
+      startBlock: 10662188
     mapping:
       kind: near/blocks
       apiVersion: 0.0.5

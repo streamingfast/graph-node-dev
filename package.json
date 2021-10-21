@@ -8,7 +8,7 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
-    "@graphprotocol/graph-cli": "https://github.com/graphprotocol/graph-cli#otavio/near",
+    "@graphprotocol/graph-cli": "https://github.com/graphprotocol/graph-cli#42b1d448ed3cb35dee50146cc59dbe70a137e764",
     "@graphprotocol/graph-ts": "https://github.com/graphprotocol/graph-ts#otavio/near",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",

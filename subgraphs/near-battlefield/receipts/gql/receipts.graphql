@@ -1,3 +1,0 @@
-type ReceiptEvent @entity {
-  id: ID!
-}

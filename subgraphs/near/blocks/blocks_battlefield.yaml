@@ -1,5 +1,5 @@
 specVersion: 0.0.2
-description: NEAR Battlefield Blocks Indexing
+description: NEAR Blocks Indexing
 repository: git@github.com:streamingfast/graph-node-dev.git
 schema:
   file: ./gql/blocks.graphql
@@ -8,7 +8,7 @@ dataSources:
     name: blocks
     network: near-battlefield
     source:
-      address: '0x0000000000000000000000000000000000000000'
+      address: 'battlefield.near'
       abi: ''
     mapping:
       kind: near/blocks

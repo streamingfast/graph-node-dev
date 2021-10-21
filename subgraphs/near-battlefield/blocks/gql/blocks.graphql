@@ -1,4 +1,0 @@
-type BlockEvent @entity {
-  id: ID!
-  number: BigInt!
-}

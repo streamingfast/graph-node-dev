@@ -10,6 +10,7 @@ pool_size = 10
 ingestor = "block_ingestor_node"
 [chains.eth-battlefield]
 shard = "primary"
+protocol = "ethereum"
 provider = [
   { label = "firehose", details = { type = "firehose", url = "http://localhost:13042" }},
   { label = "peering", url = "http://localhost:8545", features = [] },

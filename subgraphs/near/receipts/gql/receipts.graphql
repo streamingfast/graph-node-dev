@@ -1,0 +1,7 @@
+type ReceiptEvent @entity {
+  id: ID!
+
+  blockHeight: BigInt!
+  signerId: String!
+  receiverId: String!
+}
