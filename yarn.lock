@@ -182,9 +182,9 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@graphprotocol/graph-cli@https://github.com/graphprotocol/graph-cli#42b1d448ed3cb35dee50146cc59dbe70a137e764":
+"@graphprotocol/graph-cli@https://github.com/graphprotocol/graph-cli#master":
   version "0.22.4"
-  resolved "https://github.com/graphprotocol/graph-cli#42b1d448ed3cb35dee50146cc59dbe70a137e764"
+  resolved "https://github.com/graphprotocol/graph-cli#4383a7d271561e03cc1cc88a0f342c3420b469b9"
   dependencies:
     assemblyscript "0.19.10"
     binary-install-raw "0.0.13"
@@ -210,9 +210,9 @@
     which "2.0.2"
     yaml "^1.5.1"
 
-"@graphprotocol/graph-ts@https://github.com/graphprotocol/graph-ts#otavio/near":
+"@graphprotocol/graph-ts@https://github.com/graphprotocol/graph-ts#master":
   version "0.22.1"
-  resolved "https://github.com/graphprotocol/graph-ts#dea01607f4744bf4290f2b51ccd24c80e6957e29"
+  resolved "https://github.com/graphprotocol/graph-ts#f5d7ebde64bce4c7bb0b4c92e6bd42fa05eafa20"
   dependencies:
     assemblyscript "0.19.10"
 

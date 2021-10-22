@@ -48,7 +48,7 @@ deploy() {
   name=`name $path`
 
   $graph create "sf/$name" --node http://127.0.0.1:8020
-  $graph deploy --node http://127.0.0.1:8020 --ipfs http://127.0.0.1:5001 "sf/$name" "$path"
+  $graph deploy --node http://127.0.0.1:8020 --ipfs http://127.0.0.1:5001 --version-label v0.0.1 "sf/$name" "$path"
 }
 
 usage() {

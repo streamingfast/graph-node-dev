@@ -2,29 +2,21 @@ specVersion: 0.0.2
 description: NEAR Receipts Indexing
 repository: git@github.com:streamingfast/graph-node-dev.git
 schema:
-  file: ./gql/receipts.graphql
+  file: ./gql/greeting.graphql
 dataSources:
   - kind: near
     name: receipts
     network: near-mainnet
     source:
-      account: 'good-morning.near'
+      account: 'app.good-morning.near'
       startBlock: 50736512
     mapping:
       kind: near/receipts
       apiVersion: 0.0.5
       language: wasm/assemblyscript
-      file: ./src/receipts.ts
+      file: ./src/greeter.ts
       entities:
-        - ReceiptEvent
-        - ExecutionOutcome
-        - CreateAccountActionEvent
-        - DeployContractActionEvent
-        - FunctionCallActionEvent
-        - TransferActionEvent
-        - StakeActionEvent
-        - AddKeyActionEvent
-        - DeleteKeyActionEvent
-        - DeleteAccountActionEvent
+        - Greeter
+        - Greeting
       receiptHandlers:
         - handler: handleReceipt

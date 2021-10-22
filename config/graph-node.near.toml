@@ -12,7 +12,7 @@ ingestor = "block_ingestor_node"
 shard = "primary"
 protocol = "near"
 provider = [
-  { label = "near-mainnet", details = { type = "firehose", url = "https://mainnet.near.streamingfast.io" }},
+  { label = "near-mainnet", details = { type = "firehose", url = "https://mainnet.near.streamingfast.io", token = "$STREAMING_FAST_API_TOKEN" }},
 ]
 
 [chains.near-battlefield]
