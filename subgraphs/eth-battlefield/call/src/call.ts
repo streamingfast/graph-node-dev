@@ -15,7 +15,7 @@ export function handleContractCreate2(call: ContractCreate2Call): void {
     call.inputValues[2].name,
     call.inputValues[2].value.toBigInt().toString(),
     call.inputValues[3].name,
-    call.inputValues[3].value.toBoolean() === true ? "true" : "false",
+    call.inputValues[3].value.toBoolean() == true ? "true" : "false",
   ])
 
   payment.value = call.inputValues[1].value.toBigInt()

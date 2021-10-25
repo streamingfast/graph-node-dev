@@ -43,21 +43,21 @@ export function handleReceipt(receipt: near.ReceiptWithOutcome): void {
 }
 
 function handleAction(index: i32, action: near.ActionValue, receiptId: string): void {
-  if (action.kind === near.ActionKind.CREATE_ACCOUNT) {
+  if (action.kind == near.ActionKind.CREATE_ACCOUNT) {
     const event = new CreateAccountActionEvent(receiptId + "-" + index.toString())
     event.save()
 
     return
   }
 
-  if (action.kind === near.ActionKind.DEPLOY_CONTRACT) {
+  if (action.kind == near.ActionKind.DEPLOY_CONTRACT) {
     const event = new DeployContractActionEvent(receiptId + "-" + index.toString())
     event.save()
 
     return
   }
 
-  if (action.kind === near.ActionKind.FUNCTION_CALL) {
+  if (action.kind == near.ActionKind.FUNCTION_CALL) {
     const value = action.toFunctionCall()
     const event = new FunctionCallActionEvent(receiptId + "-" + index.toString())
     event.method = value.methodName
@@ -68,35 +68,35 @@ function handleAction(index: i32, action: near.ActionValue, receiptId: string): 
     return
   }
 
-  if (action.kind === near.ActionKind.TRANSFER) {
+  if (action.kind == near.ActionKind.TRANSFER) {
     const event = new TransferActionEvent(receiptId + "-" + index.toString())
     event.save()
 
     return
   }
 
-  if (action.kind === near.ActionKind.STAKE) {
+  if (action.kind == near.ActionKind.STAKE) {
     const event = new StakeActionEvent(receiptId + "-" + index.toString())
     event.save()
 
     return
   }
 
-  if (action.kind === near.ActionKind.ADD_KEY) {
+  if (action.kind == near.ActionKind.ADD_KEY) {
     const event = new AddKeyActionEvent(receiptId + "-" + index.toString())
     event.save()
 
     return
   }
 
-  if (action.kind === near.ActionKind.DELETE_KEY) {
+  if (action.kind == near.ActionKind.DELETE_KEY) {
     const event = new DeleteKeyActionEvent(receiptId + "-" + index.toString())
     event.save()
 
     return
   }
 
-  if (action.kind === near.ActionKind.DELETE_ACCOUNT) {
+  if (action.kind == near.ActionKind.DELETE_ACCOUNT) {
     const event = new DeleteAccountActionEvent(receiptId + "-" + index.toString())
     event.save()
 

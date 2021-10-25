@@ -13,13 +13,23 @@ function handleAction(
   receipt: near.ActionReceipt,
   blockHeader: near.BlockHeader
 ): void {
+  if (action.kind != near.ActionKind.FUNCTION_CALL) {
+    return
+  }
+
+  const functionCall = action.toFunctionCall()
+  if (functionCall.methodName != "sayGm") {
+    return
+  }
+
   let greeter = Greeter.load(receipt.signerId)
   if (greeter == null) {
     greeter = new Greeter(receipt.signerId)
+    greeter.name = receipt.signerId
   }
 
-  const greeting = new Greeting(receipt.id.toHexString())
-  greeting.greeter = receipt.signerId
+  const greeting = new Greeting(receipt.id.toBase58())
+  greeting.greeter = greeter.id
   greeting.timestamp = BigInt.fromI32(blockHeader.timestampNanosec as i32)
   greeting.save()
 
