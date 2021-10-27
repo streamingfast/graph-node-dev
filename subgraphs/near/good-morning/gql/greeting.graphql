@@ -1,7 +1,7 @@
 type Greeter @entity {
   id: ID!
   name: String!
-  greetings: [Greeting!]!
+  greetings: [Greeting!] @derivedFrom(field: "greeter")
 }
 
 type Greeting @entity {

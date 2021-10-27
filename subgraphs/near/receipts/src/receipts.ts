@@ -16,7 +16,7 @@ export function handleReceipt(receipt: near.ReceiptWithOutcome): void {
   const receiptId = receipt.receipt.id.toBase58()
 
   const outcome = new ExecutionOutcome(receiptId)
-  outcome.gasBurnt = BigInt.fromI32(receipt.outcome.gasBurnt as i32)
+  outcome.gasBurnt = BigInt.fromU64(receipt.outcome.gasBurnt)
   outcome.blockHash = receipt.outcome.blockHash.toBase58()
   outcome.logs = receipt.outcome.logs
   outcome.receiptIds = bytesArrayToStringArray(receipt.outcome.receiptIds)
@@ -26,7 +26,7 @@ export function handleReceipt(receipt: near.ReceiptWithOutcome): void {
   outcome.save()
 
   const event = new ReceiptEvent(receiptId)
-  event.blockHeight = BigInt.fromI32(receipt.block.header.height as i32)
+  event.blockHeight = BigInt.fromU64(receipt.block.header.height)
   event.outcome = outcome.id
   event.predecessorId = receipt.receipt.predecessorId
   event.receiverId = receipt.receipt.receiverId

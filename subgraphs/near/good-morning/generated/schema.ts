@@ -17,7 +17,6 @@ export class Greeter extends Entity {
     this.set("id", Value.fromString(id));
 
     this.set("name", Value.fromString(""));
-    this.set("greetings", Value.fromStringArray(new Array(0)));
   }
 
   save(): void {
@@ -55,13 +54,21 @@ export class Greeter extends Entity {
     this.set("name", Value.fromString(value));
   }
 
-  get greetings(): Array<string> {
+  get greetings(): Array<string> | null {
     let value = this.get("greetings");
-    return value!.toStringArray();
+    if (!value || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toStringArray();
+    }
   }
 
-  set greetings(value: Array<string>) {
-    this.set("greetings", Value.fromStringArray(value));
+  set greetings(value: Array<string> | null) {
+    if (!value) {
+      this.unset("greetings");
+    } else {
+      this.set("greetings", Value.fromStringArray(<Array<string>>value));
+    }
   }
 }
 
