@@ -210,9 +210,9 @@
     which "2.0.2"
     yaml "^1.5.1"
 
-"@graphprotocol/graph-ts@https://github.com/graphprotocol/graph-ts#master":
-  version "0.22.1"
-  resolved "https://github.com/graphprotocol/graph-ts#f5d7ebde64bce4c7bb0b4c92e6bd42fa05eafa20"
+"@graphprotocol/graph-ts@https://github.com/graphprotocol/graph-ts#0.23.1":
+  version "0.23.1"
+  resolved "https://github.com/graphprotocol/graph-ts#aa8f14baa37394a98b892987bafba0ed9a252972"
   dependencies:
     assemblyscript "0.19.10"
 
