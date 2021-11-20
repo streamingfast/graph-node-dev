@@ -1,0 +1,22 @@
+specVersion: 0.0.2
+description: NEAR Vital Example
+repository: git@github.com:streamingfast/graph-node-dev.git
+schema:
+  file: ./gql/vital.graphql
+dataSources:
+  - kind: near
+    name: receipts
+    network: near-mainnet
+    source:
+      account: 'vital.near'
+      startBlock: 50736512
+    mapping:
+      kind: near/receipts
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      file: ./src/vital.ts
+      entities:
+        - Greeter
+        - Greeting
+      receiptHandlers:
+        - handler: handleReceipt

@@ -1,0 +1,10 @@
+type ActionInfo @entity {
+  id: ID!
+  dataReceivers: [DataReceiver!]!
+}
+
+type DataReceiver @entity {
+  id: ID!
+  dataId: Bytes!
+  receiverId: String!
+}

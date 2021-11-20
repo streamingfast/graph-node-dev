@@ -1,4 +1,4 @@
-import { Bytes, log } from "@graphprotocol/graph-ts"
+import { Bytes, log, Address } from "@graphprotocol/graph-ts"
 import { ContractCreate2Call } from "../generated/call/main"
 import { Payment } from "../generated/schema"
 
