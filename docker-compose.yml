@@ -1,13 +1,15 @@
 version: "3"
 services:
   ipfs:
+    container_name: ipfs-gn
     image: ipfs/go-ipfs:v0.4.23
     ports:
       - "5001:5001"
     volumes:
       - ./data/ipfs:/data/ipfs
   postgres:
-    image: postgres
+    container_name: postgres-gn
+    image: postgres:14
     ports:
       - "5432:5432"
     command: ["postgres", "-cshared_preload_libraries=pg_stat_statements"]
@@ -18,9 +20,14 @@ services:
       POSTGRES_DB: graph-node
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
-  phppgadmin:
-    image: docker.io/bitnami/phppgadmin:7
+  pgweb:
+    container_name: pgweb-gn
+    image: sosedoff/pgweb
     ports:
-      - "9080:8080"
+      - "8081:8081"
+    links:
+      - postgres:postgres
+    environment:
+      - DATABASE_URL=postgres://graph-node:let-me-in@postgres:5432/graph-node?sslmode=disable
     depends_on:
       - postgres
