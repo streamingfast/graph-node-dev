@@ -6,7 +6,6 @@ import {
   Value,
   ValueKind,
   store,
-  Address,
   Bytes,
   BigInt,
   BigDecimal
@@ -16,26 +15,32 @@ export class Payment extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
+
+    this.set("to", Value.fromString(""));
+    this.set("from", Value.fromString(""));
+    this.set("value", Value.fromBigInt(BigInt.zero()));
   }
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save Payment entity without an ID");
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save Payment entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("Payment", id.toString(), this);
+    assert(id != null, "Cannot save Payment entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        "Cannot save Payment entity with non-string ID. " +
+          'Considering using .toHex() to convert the "id" to a string.'
+      );
+      store.set("Payment", id.toString(), this);
+    }
   }
 
   static load(id: string): Payment | null {
-    return store.get("Payment", id) as Payment | null;
+    return changetype<Payment | null>(store.get("Payment", id));
   }
 
   get id(): string {
     let value = this.get("id");
-    return value.toString();
+    return value!.toString();
   }
 
   set id(value: string) {
@@ -44,7 +49,7 @@ export class Payment extends Entity {
 
   get to(): string {
     let value = this.get("to");
-    return value.toString();
+    return value!.toString();
   }
 
   set to(value: string) {
@@ -53,7 +58,7 @@ export class Payment extends Entity {
 
   get from(): string {
     let value = this.get("from");
-    return value.toString();
+    return value!.toString();
   }
 
   set from(value: string) {
@@ -62,7 +67,7 @@ export class Payment extends Entity {
 
   get value(): BigInt {
     let value = this.get("value");
-    return value.toBigInt();
+    return value!.toBigInt();
   }
 
   set value(value: BigInt) {

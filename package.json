@@ -9,7 +9,7 @@
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "@graphprotocol/graph-cli": "https://github.com/graphprotocol/graph-cli#master",
-    "@graphprotocol/graph-ts": "https://github.com/graphprotocol/graph-ts#0.23.1",
+    "@graphprotocol/graph-ts": "https://github.com/graphprotocol/graph-ts#master",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
     "eslint": "^7.27.0",
