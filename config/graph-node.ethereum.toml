@@ -15,13 +15,13 @@ provider = [
   { label = "firehose", details = { type = "firehose", url = "https://ropsten.streamingfast.io", token = "$STREAMING_FAST_API_TOKEN" }},
   { label = "peering", url = "http://localhost:8545", features = [] },
 ]
-[chains.eth-battlefield]
-shard = "primary"
-protocol = "ethereum"
-provider = [
-  { label = "firehose", details = { type = "firehose", url = "http://localhost:13042" }},
-  { label = "peering", url = "http://localhost:8545", features = [] },
-]
+# [chains.eth-battlefield]
+# shard = "primary"
+# protocol = "ethereum"
+# provider = [
+#   { label = "firehose", details = { type = "firehose", url = "http://localhost:13042" }},
+#   { label = "peering", url = "http://localhost:8545", features = [] },
+# ]
 
 [deployment]
 [[deployment.rule]]
