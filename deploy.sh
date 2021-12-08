@@ -9,15 +9,17 @@ source "$ROOT/library.sh"
 graph="node_modules/.bin/graph"
 build=
 clean=
+upload_only=
 
 main() {
   pushd "$ROOT" &> /dev/null
 
-  while getopts "hbc" opt; do
+  while getopts "hbcu" opt; do
     case $opt in
       h) usage && exit 0;;
       b) build=true;;
       c) clean=true;;
+      u) upload_only=true;;
       \?) usage_error "Invalid option: -$OPTARG";;
     esac
   done
@@ -46,9 +48,17 @@ deploy() {
 
   chain=`chain $path`
   name=`name $path`
+  node="http://127.0.0.1:8020"
+  if [[ "$upload_only" != true ]]; then
+    # Unresolvable node prevent deployment for now, until `graph-cli` offers it natively
+    node="http://unknown:1"
+  fi
 
-  $graph create "sf/$name" --node http://127.0.0.1:8020
-  $graph deploy --node http://127.0.0.1:8020 --ipfs http://127.0.0.1:5001 --version-label v0.0.1 "sf/$name" "$path"
+  if [[ "$upload_only" != true ]]; then
+    $graph create "sf/$name" --node "$node"
+  fi
+
+  $graph deploy --node $node --ipfs http://127.0.0.1:5001 --version-label v0.0.1 "sf/$name" "$path"
 }
 
 usage() {
@@ -61,6 +71,7 @@ usage() {
   echo "Options"
   echo "    -b          Build the subgraph prior deploying it"
   echo "    -c          Clean any previous deployment(s)"
+  echo "    -u          Upload only IPFS files and do not actually deploy"
   echo "    -h          Display help about this script"
 }
 
