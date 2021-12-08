@@ -1,11 +1,11 @@
 specVersion: 0.0.2
 description: Tracking WETH token transfers on ETH Mainnet using CALLs
-repository: https://github.com/streamingfast/graph-node-dev.git 
+repository: https://github.com/streamingfast/graph-node-dev.git
 schema:
   file: ./gql/transfer.graphql
 dataSources:
   - kind: ethereum/contract
-    name: Factory
+    name: transfer
     network: eth-mainnet
     source:
       address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2' # WETH
