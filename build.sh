@@ -35,7 +35,7 @@ build() {
   name=`name $path`
 
   $graph codegen -o "subgraphs/$chain/$name/generated" "$path"
-  $graph build "$path"
+  $graph build "$path" --ipfs http://localhost:5001
 }
 
 usage() {

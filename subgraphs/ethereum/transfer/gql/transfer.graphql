@@ -5,3 +5,8 @@ type Payment @entity {
     from: String!
     value: BigInt!
 }
+type Block @entity {
+    id: ID!
+
+    number: BigInt!
+}
