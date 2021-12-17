@@ -13,7 +13,7 @@ clean=
 main() {
   pushd "$ROOT" &> /dev/null
 
-  while getopts "hbcu" opt; do
+  while getopts "hbc" opt; do
     case $opt in
       h) usage && exit 0;;
       b) build=true;;
