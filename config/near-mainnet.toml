@@ -15,13 +15,6 @@ provider = [
   { label = "near-mainnet", details = { type = "firehose", url = "https://mainnet.near.streamingfast.io", token = "$STREAMING_FAST_API_TOKEN" }},
 ]
 
-[chains.near-battlefield]
-shard = "primary"
-protocol = "near"
-provider = [
-  { label = "near-battlefield", details = { type = "firehose", url = "http://localhost:15042" }},
-]
-
 [deployment]
 [[deployment.rule]]
 shard = "primary"

@@ -8,9 +8,7 @@ dataSources:
     name: transfer
     network: eth-mainnet
     source:
-#      address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2' # WETH
-#      address: '0x04abeda201850ac0124161f037efd70c74ddc74c' # some token..
-#      address: '0xdac17f958d2ee523a2206206994597c13d831ec7' # USDT
+      address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2' # WETH
       abi: transfer
       startBlock: 11000000
     mapping:
@@ -26,8 +24,5 @@ dataSources:
           file: ./abis/transfer_erc20.json
       blockHandlers:
         - handler: handleBlock
-#          filter:
-#            kind: call     
-#      callHandlers:
-#        - function: transfer(address,uint256)
-#          handler: handleTransferCall
+          filter:
+            kind: call
