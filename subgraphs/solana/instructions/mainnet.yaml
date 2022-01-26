@@ -1,0 +1,21 @@
+specVersion: 0.0.2
+description: Solana Instruction Indexing
+repository: git@github.com:streamingfast/graph-node-dev.git
+schema:
+  file: ./gql/instructions.graphql
+dataSources:
+  - kind: solana
+    name: instructions
+    network: solana-mainnet
+    source:
+      programId: '9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin'
+      startBlock: 115992800
+    mapping:
+      kind: solana/instructions
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      file: ./src/instructions.ts
+      entities:
+        - InstructionEvent
+      instructionHandlers:
+        - handler: handleInstruction

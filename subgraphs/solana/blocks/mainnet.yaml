@@ -1,0 +1,23 @@
+specVersion: 0.0.2
+description: Solana Blocks Indexing
+repository: git@github.com:streamingfast/graph-node-dev.git
+schema:
+  file: ./gql/blocks.graphql
+dataSources:
+  - kind: solana
+    name: blocks
+    network: solana-mainnet
+    source:
+      address: ''
+      abi: ''
+      startBlock: 115992800
+    mapping:
+      kind: solana/blocks
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      file: ./src/blocks.ts
+      abis: []
+      entities:
+        - BlockEvent
+      blockHandlers:
+        - handler: handleBlock
