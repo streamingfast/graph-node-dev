@@ -5,6 +5,7 @@ services:
     image: ipfs/go-ipfs:v0.4.23
     ports:
       - "5001:5001"
+      - "5002:8080"
     volumes:
       - ./data/ipfs:/data/ipfs
   postgres:
@@ -27,10 +28,13 @@ services:
       retries: 15
   pgweb:
     container_name: pgweb-gn
-    image: sosedoff/pgweb
+    image: sosedoff/pgweb:0.11.10
     restart: on-failure
     ports:
       - "8081:8081"
+    command: ["pgweb", "--bind=0.0.0.0", "--listen=8081", "--binary-codec=hex"]
+    #command: ["pgweb", "--binary-codec=base58"]
+    #command: ["pgweb", "--binary-codec=base64"]
     links:
       - postgres:postgres
     environment:

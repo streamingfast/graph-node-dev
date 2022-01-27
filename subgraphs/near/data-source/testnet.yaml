@@ -1,18 +1,29 @@
 specVersion: 0.0.2
-description: NEAR Receipts Indexing
+description: NEAR Dynamic Data Source Indexing
 repository: git@github.com:streamingfast/graph-node-dev.git
 schema:
   file: ./gql/receipts.graphql
 dataSources:
   - kind: near
-    name: receipts
+    name: creators
     network: near-mainnet
     source:
-      account: 'good-morning.near'
-      startBlock: 50736512
+      account: 'factory.endemic.testnet'
+      startBlock: 80066037
     mapping:
       apiVersion: 0.0.5
-      kind: 'near/receipts'
+      language: wasm/assemblyscript
+      file: ./src/creators.ts
+      entities:
+        - CreatedContract
+      receiptHandlers:
+        - handler: handleCreation
+templates:
+  - kind: near
+    name: receipts
+    network: near-mainnet
+    mapping:
+      apiVersion: 0.0.5
       language: wasm/assemblyscript
       file: ./src/receipts.ts
       entities:
@@ -27,4 +38,5 @@ dataSources:
         - DeleteKeyActionEvent
         - DeleteAccountActionEvent
       receiptHandlers:
-        - handler: handleReceipt
+        - handler: handleReceipts
+

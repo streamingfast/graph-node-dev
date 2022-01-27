@@ -1,0 +1,66 @@
+type CreatedContract @entity {
+  id: ID!
+  blockHeight: BigInt!
+  account: String!
+}
+
+type ReceiptEvent @entity {
+  id: ID!
+
+  blockHeight: BigInt!
+  outcome: ExecutionOutcome!
+  predecessorId: String!
+  receiverId: String!
+  signerId: String!
+  signerPublicKey: String!
+  gasPrice: BigInt!
+  # outputDataReceivers: ArrayDataReceiver!
+  inputDataIds: [String!]!
+}
+
+type ExecutionOutcome @entity {
+  id: ID!
+
+  gasBurnt: BigInt!
+  # proof: String!
+  blockHash: String!
+  logs: [String!]!
+  receiptIds: [String!]!
+  tokensBurnt: BigInt!
+  executorId: String!
+  status: Int!
+}
+
+type CreateAccountActionEvent @entity {
+  id: ID!
+}
+
+type DeployContractActionEvent @entity {
+  id: ID!
+}
+
+type FunctionCallActionEvent @entity {
+  id: ID!
+  method: String!
+  args: Bytes!
+}
+
+type TransferActionEvent @entity {
+  id: ID!
+}
+
+type StakeActionEvent @entity {
+  id: ID!
+}
+
+type AddKeyActionEvent @entity {
+  id: ID!
+}
+
+type DeleteKeyActionEvent @entity {
+  id: ID!
+}
+
+type DeleteAccountActionEvent @entity {
+  id: ID!
+}

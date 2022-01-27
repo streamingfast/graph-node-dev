@@ -8,11 +8,9 @@ dataSources:
     name: blocks
     network: near-mainnet
     source:
-      address: 'battlefield.near'
-      abi: ''
+      account: 'battlefield.near'
       startBlock: 10662188
     mapping:
-      kind: near/blocks
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       file: ./src/blocks.ts
