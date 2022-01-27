@@ -8,11 +8,11 @@ pool_size = 10
 
 [chains]
 ingestor = "block_ingestor_node"
-[chains.near-testnet]
+[chains.eth-ropsten]
 shard = "primary"
-protocol = "near"
+protocol = "ethereum"
 provider = [
-  { label = "near-testnet", details = { type = "firehose", url = "https://testnet.near.streamingfast.io", token = "$STREAMING_FAST_API_TOKEN" }},
+  { label = "peering", url = "$STREAMING_FAST_ETH_ROPSTEN_RPC", features = [ "archive" ] },
 ]
 
 [deployment]

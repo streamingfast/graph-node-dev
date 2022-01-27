@@ -9,6 +9,18 @@ name() {
   printf $1 | sed s,subgraphs/,, | sed -E s,/[_a-zA-Z0-9-]+\.yaml$,, | sed -E s,^[_a-zA-Z0-9-]+/,,
 }
 
+deployment_name() {
+  name="`name $1`"
+  suffix="$2"
+
+  deployment_name="sf/$name"
+  if [[ -n "$suffix" ]]; then
+    deployment_name="$deployment_name-$suffix"
+  fi
+
+  printf "$deployment_name"
+}
+
 subgraphs() {
    find subgraphs -type f -name "*.yaml" | tr "\n" " " | sed -E s'/, $//' | sed -E s,^[_a-zA-Z0-9-]+/,,
 }
@@ -26,7 +38,7 @@ usage_error() {
 graphman_remove() {
   check_graphman
 
-  $GRAPHMAN --config "$ROOT/config/graphman.toml" remove "sf/`name $1`"
+  $GRAPHMAN --config "$ROOT/config/graphman.toml" remove "$1"
   $GRAPHMAN --config "$ROOT/config/graphman.toml" unused record
   $GRAPHMAN --config "$ROOT/config/graphman.toml" unused remove
 }

@@ -1,0 +1,27 @@
+[general]
+
+[store]
+[store.primary]
+connection = "postgresql://graph-node:let-me-in@localhost:5432/graph-node"
+weight = 1
+pool_size = 10
+
+[chains]
+ingestor = "block_ingestor_node"
+[chains.near-mainnet]
+shard = "primary"
+protocol = "near"
+provider = [
+  { label = "near-mainnet", details = { type = "firehose", url = "https://mainnet.near.streamingfast.io", token = "$STREAMING_FAST_API_TOKEN" }},
+]
+[chains.near-testnet]
+shard = "primary"
+protocol = "near"
+provider = [
+  { label = "near-testnet", details = { type = "firehose", url = "https://tesnet.near.streamingfast.io", token = "$STREAMING_FAST_API_TOKEN" }},
+]
+
+[deployment]
+[[deployment.rule]]
+shard = "primary"
+indexers = [ "default" ]
