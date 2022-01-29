@@ -11,7 +11,6 @@ dataSources:
       address: 'battlefield.near'
       abi: ''
     mapping:
-      kind: near/blocks
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       file: ./src/blocks.ts

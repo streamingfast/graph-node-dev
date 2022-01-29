@@ -33,7 +33,7 @@ export function handleReceipt(receipt: near.ReceiptWithOutcome): void {
     // Each `get` iterates through all entries to find the element. If you need to process each field,
     // it's more efficient to iterate on `firstValue.entries` and have a big `switch` case that do
     // something differently for each field.
-    const id = mustGet(firstValue, "id")?.toString()
+    const id = firstValue.mustGet("id").toString()
   }
 
   outcome.save()
@@ -124,11 +124,4 @@ function bytesArrayToStringArray(values: Bytes[]): string[] {
   }
 
   return strings
-}
-
-function mustGet(value: TypedMap<string, JSONValue>, key: string): JSONValue {
-  const out = value.get(key)
-  assert(out != null, `JSON key ${key} is not found in JSON Object.`)
-
-  return out!
 }

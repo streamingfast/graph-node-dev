@@ -24,18 +24,6 @@ export function handleReceipt(receipt: near.ReceiptWithOutcome): void {
   outcome.tokensBurnt = receipt.outcome.tokensBurnt
   outcome.executorId = receipt.outcome.executorId
   outcome.status = status.kind
-
-  if (receipt.outcome.status.kind == near.SuccessStatusKind.VALUE) {
-    const returnBytes = status.toValue()
-    const returnValues = json.fromBytes(returnBytes).toArray()
-    const firstValue = returnValues[0].toObject()
-
-    // Each `get` iterates through all entries to find the element. If you need to process each field,
-    // it's more efficient to iterate on `firstValue.entries` and have a big `switch` case that do
-    // something differently for each field.
-    const id = mustGet(firstValue, "id")?.toString()
-  }
-
   outcome.save()
 
   const event = new ReceiptEvent(receiptId)
@@ -128,7 +116,13 @@ function bytesArrayToStringArray(values: Bytes[]): string[] {
 
 function mustGet(value: TypedMap<string, JSONValue>, key: string): JSONValue {
   const out = value.get(key)
-  assert(out != null, `JSON key ${key} is not found in JSON Object.`)
+  if (out == null) {
+    throw `JSON key ${key} is not found in JSON Object.`
+  }
 
-  return out!
+  let nullable: string | null = "text"
+  assert(nullable != null, "assertion phrase~")
+  let nonNullable: string = nullable
+
+  return out
 }

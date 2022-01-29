@@ -11,7 +11,6 @@ dataSources:
       account: 'app.good-morning.near'
       startBlock: 50736512
     mapping:
-      kind: near/receipts
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       file: ./src/greeter.ts

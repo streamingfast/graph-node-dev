@@ -1,32 +1,22 @@
-import { near, BigInt, Bytes, json, JSONValue, TypedMap } from "@graphprotocol/graph-ts"
+import { near, BigInt, Bytes, json, JSONValue, TypedMap, log } from "@graphprotocol/graph-ts"
 import { receipts as ReceiptsTemplate } from "../generated/templates"
 
 export function handleCreation(receipt: near.ReceiptWithOutcome): void {
   const actions = receipt.receipt.actions
   if (!hasFunctionCall("create_token", actions)) {
+    log.info("no fonction create_token called", [])
     return
   }
 
   assert(receipt.outcome.logs.length == 1, "expected a single log for this method call")
-  const nftContractCreatedEvent = json.fromString(receipt.outcome.logs[0])
-  nftContractCreatedEvent.
+  const nftContractCreatedEvent = decodeNftContractCreatedEvent(
+    json.fromString(receipt.outcome.logs[0])
+  )
 
-  // {
-  //   "standard": "endemic-nep171",
-  //   "version": "1.0.0",
-  //   "event": "nft_contract_created",
-  //   "data": {
-  //     "contract_account": "iko-80066038.factory.endemic.testnet",
-  //     "owner_id": "imacek.testnet",
-  //     "name": "Bome Slicice",
-  //     "symbol": "IKO",
-  //     "category": "Collectibles",
-  //     "base_uri": "https://endemic.mypinata.cloud/ipfs"
-  //   }
-  // }
+  ReceiptsTemplate.create(nftContractCreatedEvent.contractAccount)
 }
 
-type NftContractCreatedEvent = {
+class NftContractCreatedEvent {
   name: string
   contractAccount: string
   symbol: string
@@ -35,11 +25,31 @@ type NftContractCreatedEvent = {
 }
 
 function decodeNftContractCreatedEvent(event: JSONValue): NftContractCreatedEvent {
-  const dataNode = event.toObject().get("data")
-  if (dataNode)
+  const dataNode = event.toObject().mustGet("data").toObject()
 
-  const data = event.toObject().get("data").toObject()
-  for (let i = 0; i < )
+  const out: NftContractCreatedEvent = {
+    name: "",
+    contractAccount: "",
+    symbol: "",
+    category: "",
+    baseUri: "",
+  }
+  for (let i = 0; i < dataNode.entries.length; i++) {
+    const entry = dataNode.entries[i]
+    if (entry.key == "name") {
+      out.name = entry.value.toString()
+    } else if (entry.key == "contract_account") {
+      out.contractAccount = entry.value.toString()
+    } else if (entry.key == "symbol") {
+      out.symbol = entry.value.toString()
+    } else if (entry.key == "category") {
+      out.category = entry.value.toString()
+    } else if (entry.key == "base_uri") {
+      out.baseUri = entry.value.toString()
+    }
+  }
+
+  return out
 }
 
 function hasFunctionCall(name: string, actions: near.ActionValue[]): bool {
@@ -48,7 +58,7 @@ function hasFunctionCall(name: string, actions: near.ActionValue[]): bool {
 
     if (
       action.kind == near.ActionKind.FUNCTION_CALL &&
-      action.toFunctionCall().methodName == "name"
+      action.toFunctionCall().methodName == name
     ) {
       return true
     }

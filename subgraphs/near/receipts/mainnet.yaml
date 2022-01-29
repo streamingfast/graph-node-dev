@@ -12,7 +12,6 @@ dataSources:
       startBlock: 50736512
     mapping:
       apiVersion: 0.0.5
-      kind: 'near/receipts'
       language: wasm/assemblyscript
       file: ./src/receipts.ts
       entities:

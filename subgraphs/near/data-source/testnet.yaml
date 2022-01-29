@@ -6,10 +6,10 @@ schema:
 dataSources:
   - kind: near
     name: creators
-    network: near-mainnet
+    network: near-testnet
     source:
       account: 'factory.endemic.testnet'
-      startBlock: 80066037
+      startBlock: 80066036
     mapping:
       apiVersion: 0.0.5
       language: wasm/assemblyscript
@@ -21,7 +21,7 @@ dataSources:
 templates:
   - kind: near
     name: receipts
-    network: near-mainnet
+    network: near-testnet
     mapping:
       apiVersion: 0.0.5
       language: wasm/assemblyscript
@@ -38,5 +38,5 @@ templates:
         - DeleteKeyActionEvent
         - DeleteAccountActionEvent
       receiptHandlers:
-        - handler: handleReceipts
+        - handler: handleReceipt
 
