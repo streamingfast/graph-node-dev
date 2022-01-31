@@ -4,7 +4,7 @@ import {
 
 export function handleInstruction(instruction: solana.InstructionWithBlock): void {
   const programId = instruction.instruction.programId.toBase58()
-  log.info("Handling instruction for program {} in block {}", [programId, instruction.block.number.toString()])
+  log.info("Handling instruction for program {} in block {}", [programId, instruction.block_num.toString()])
 }
 
 function bytesArrayToStringArray(values: Bytes[]): string[] {
