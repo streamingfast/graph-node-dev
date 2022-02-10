@@ -9,7 +9,7 @@ dataSources:
     network: solana-mainnet
     source:
       programId: '9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin'
-      startBlock: 118081400
+      startBlock: 120087500
     mapping:
       kind: solana/instructions
       apiVersion: 0.0.5
