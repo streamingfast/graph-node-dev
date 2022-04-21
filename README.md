@@ -27,8 +27,13 @@ tasks.
 ```
 
 ```bash
-# In another terminal, set up the port-forward to the peering service
-./pf.sh
+# In another terminal, set up the port-forward to the peering service for solana
+./pf-sol.sh
+```
+
+```bash
+# In another terminal, set up the port-forward to the peering service for bsc
+./pf-bsc.sh
 ```
 
 **Note** Required only if developing Firehose services, which is the case here.
@@ -41,7 +46,7 @@ GRAPH_LOG=trace cargo run -- --config config/graph-node.eth-ropsten.toml --ipfs 
 
 ```bash
 # Yet again in another terminal, deploy the subgraph to your local stack
-./deploy.sh subgraphs/eth-ropsten/transfer/transfer.yaml # Flag -c can be added to remove the previous deployment if it exists
+./deploy.sh subgraphs/ethereum/transfer/ropsten-calls.yaml # Flag -c can be added to remove the previous deployment if it exists
 ```
 
 ### Content of `config-firehose.toml`
