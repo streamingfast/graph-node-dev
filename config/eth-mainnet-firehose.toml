@@ -12,7 +12,7 @@ ingestor = "block_ingestor_node"
 shard = "primary"
 protocol = "ethereum"
 provider = [
-  { label = "firehose", details = { type = "firehose", url = "https://api.streamingfast.io", token = "$STREAMING_FAST_API_TOKEN" }},
+  { label = "firehose", details = { type = "firehose", url = "https://api-dev.streamingfast.io", token = "$STREAMING_FAST_API_TOKEN", features = [ "filters" ] }},
   { label = "peering", url = "$STREAMING_FAST_ETH_MAINNET_RPC", features = [ "archive" ] },
 ]
 
