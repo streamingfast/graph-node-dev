@@ -6,15 +6,14 @@ schema:
 dataSources:
   - kind: near
     name: blocks
-    network: near-mainnet
+    network: near-testnet
     source:
       account: 'battlefield.near'
-      startBlock: 10662188
+      startBlock: 42376924
     mapping:
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       file: ./src/blocks.ts
-      abis: []
       entities:
         - BlockEvent
       blockHandlers:

@@ -1,0 +1,19 @@
+{
+  "near-mainnet": {
+    "blocks": {
+      "startBlock": 63098230
+    }
+  },
+
+  "near-testnet": {
+    "blocks": {
+      "startBlock": 42376924
+    }
+  },
+
+  "near-battlefield": {
+    "blocks": {
+      "startBlock": 10
+    }
+  }
+}

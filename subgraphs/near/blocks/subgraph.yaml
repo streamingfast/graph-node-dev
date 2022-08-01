@@ -1,4 +1,4 @@
-specVersion: 0.0.2
+specVersion: 0.0.5
 description: NEAR Blocks Indexing
 repository: git@github.com:streamingfast/graph-node-dev.git
 schema:
@@ -6,15 +6,13 @@ schema:
 dataSources:
   - kind: near
     name: blocks
-    network: near-battlefield
+    network: near-mainnet
     source:
-      address: 'battlefield.near'
-      abi: ''
+      startBlock: 63098230
     mapping:
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       file: ./src/blocks.ts
-      abis: []
       entities:
         - BlockEvent
       blockHandlers:

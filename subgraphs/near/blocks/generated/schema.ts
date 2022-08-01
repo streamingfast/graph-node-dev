@@ -15,32 +15,6 @@ export class BlockEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
-
-    this.set("number", Value.fromBigInt(BigInt.zero()));
-    this.set("height", Value.fromBigInt(BigInt.zero()));
-    this.set("prevHeight", Value.fromBigInt(BigInt.zero()));
-    this.set("blockOrdinal", Value.fromBigInt(BigInt.zero()));
-    this.set("epochId", Value.fromBytes(Bytes.empty()));
-    this.set("nextEpochId", Value.fromBytes(Bytes.empty()));
-    this.set("chunksIncluded", Value.fromBigInt(BigInt.zero()));
-    this.set("hash", Value.fromBytes(Bytes.empty()));
-    this.set("prevHash", Value.fromBytes(Bytes.empty()));
-    this.set("timestampNanosec", Value.fromBigInt(BigInt.zero()));
-    this.set("prevStateRoot", Value.fromBytes(Bytes.empty()));
-    this.set("chunkReceiptsRoot", Value.fromBytes(Bytes.empty()));
-    this.set("chunkHeadersRoot", Value.fromBytes(Bytes.empty()));
-    this.set("chunkTxRoot", Value.fromBytes(Bytes.empty()));
-    this.set("outcomeRoot", Value.fromBytes(Bytes.empty()));
-    this.set("challengesRoot", Value.fromBytes(Bytes.empty()));
-    this.set("randomValue", Value.fromBytes(Bytes.empty()));
-    this.set("gasPrice", Value.fromBigInt(BigInt.zero()));
-    this.set("totalSupply", Value.fromBigInt(BigInt.zero()));
-    this.set("lastFinalBlock", Value.fromBytes(Bytes.empty()));
-    this.set("lastDsFinalBlock", Value.fromBytes(Bytes.empty()));
-    this.set("nextBpHash", Value.fromBytes(Bytes.empty()));
-    this.set("blockMerkleRoot", Value.fromBytes(Bytes.empty()));
-    this.set("epochSyncDataHash", Value.fromBytes(Bytes.empty()));
-    this.set("latestProtocolVersion", Value.fromI32(0));
   }
 
   save(): void {
@@ -49,8 +23,7 @@ export class BlockEvent extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        "Cannot save BlockEvent entity with non-string ID. " +
-          'Considering using .toHex() to convert the "id" to a string.'
+        `Entities of type BlockEvent must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
       );
       store.set("BlockEvent", id.toString(), this);
     }

@@ -1,4 +1,4 @@
-specVersion: 0.0.2
+specVersion: 0.0.5
 description: Testing Call handler on an Ethereum Battlefield chain
 repository: https://github.com/streamingfast/graph-node-dev.git
 schema:
@@ -13,7 +13,7 @@ dataSources:
       startBlock: 1
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.4
+      apiVersion: 0.0.5
       language: wasm/assemblyscript
       file: ./src/call.ts
       entities:

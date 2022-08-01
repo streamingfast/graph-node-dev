@@ -42,6 +42,8 @@ main() {
     subgraphName="`deployment_name $path $suffix`"
   fi
 
+  network="$1"
+
   if [[ "$using_path" == "true" ]]; then
     rm -rf build
 
@@ -84,11 +86,16 @@ deploy_from_hash() {
 }
 
 usage() {
-  echo "usage: deploy [-b] [-c] [-s <suffix>] <name>"
+  echo "usage: deploy [-b] [-c] [-s <suffix>] <name> [<network>]"
   echo ""
   echo "Deploy the given named subgraph to the development system."
   echo "This scripts deals with all required commands needed to deploy"
   echo "a subgraph into a development environment."
+  echo ""
+  echo ""
+  echo "If <network> argument is specified, '--network' is passed to graph-cli"
+  echo "tool effectively templating the manifest with the correct values for"
+  echo "the network."
   echo ""
   echo "Options"
   echo "    -b            Build the subgraph prior deploying it"
