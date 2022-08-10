@@ -1,0 +1,7 @@
+type Block @entity {
+    id: ID!
+    parentHash: Bytes!
+    number: Int!
+    txCount: BigInt!
+    size: BigDecimal!
+}

@@ -1,0 +1,27 @@
+specVersion: v0.1.0
+package:
+  name: ethereum_network_v1
+  version: v0.1.0
+  url: https://github.com/streamingfast/substreams-uniswap-v3
+  doc: |
+    These substream modules compose the Ethereum Network substreams.
+
+protobuf:
+  files:
+    - network/v1/network.proto
+  importPaths:
+    - ./proto
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: target/wasm32-unknown-unknown/release/substreams_network_v1.wasm
+
+modules:
+  - name: graph_out
+    kind: map
+    initialBlock: 12369621
+    inputs:
+      - source: sf.ethereum.type.v1.Block
+    output:
+      type: proto:network.types.v1.EntitiesChanges

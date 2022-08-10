@@ -8,6 +8,7 @@ services:
       - "5002:8080"
     volumes:
       - ./data/ipfs:/data/ipfs
+      - ./data/ipfs-export:/export
   postgres:
     container_name: postgres-gn
     image: postgres:14
