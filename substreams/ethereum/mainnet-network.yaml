@@ -11,7 +11,7 @@ dataSources:
     network: mainnet
     source:
       package:
-        moduleName: output
+        moduleName: graph_out
         file:
           /: <spkg_cid>
     mapping:
