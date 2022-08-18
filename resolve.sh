@@ -18,7 +18,7 @@ main() {
 
 
   manifest_file="$1"
-  manifest_resolved_file=`echo "$manifest_file" | sed -e "s/.yaml/_resovled.yaml/"`
+  manifest_resolved_file=`echo "$manifest_file" | sed -e "s/.yaml/_resolved.yaml/"`
 
   echo "Cleaning Up"
   rm -f manifest_resolved_file
@@ -28,7 +28,7 @@ main() {
   manifest_dir=`pwd`
   echo "Packing Substreams"
   spkg_file=`pack`
-  echo "Substreams sokg is ready $spkg_file"
+  echo "Substreams spkg is ready $spkg_file"
   echo ""
 
   echo "Adding schema $schema_file to IPFS"
@@ -41,7 +41,7 @@ main() {
   echo "SPKG cid $spkg_cid"
   echo ""
 
-  echo "output resolved subgraph manigest: $manifest_resolved_file"
+  echo "output resolved subgraph manifest: $manifest_resolved_file"
   cat "$manifest_dir/$manifest_file" | sed -e "s:<schema_cid>:/ipfs/$schema_cid:" | sed -e "s:<spkg_cid>:/ipfs/${spkg_cid}:" > "$manifest_dir/$manifest_resolved_file"
 
   resolved_manifest_file_cid=`ipfs_upload "$manifest_dir/$manifest_resolved_file"`
