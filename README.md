@@ -117,3 +117,33 @@ provider = [
 shard = "primary"
 indexers = [ "default" ]
 ```
+
+### Deploy subgraph datasource with substreams
+
+> Make sure you have ipfs and httpie installed (`brew install ipfs httpie`)
+
+#### Run firehose
+Either run the firehose locally, check sf-ethereum readme on how to run it, or use remote firehose (`api-dev.streamingfast.io`, `api-unstable.streamingfast.io`). To simplify the launching of the `firehose`, you can simply run the `start.sh` script located [here](https://github.com/streamingfast/sf-ethereum/tree/develop/devel/eth-local).
+
+#### Build `substreams/ethereum` substreams
+`./build.sh` or `cargo build --release --target wasm32-unknown-unknown`
+
+#### Run graph-node-dev `up.sh` start up script in a terminal
+
+#### In a different terminal run graph-node locally
+```bash
+git clone git@github.com:graphprotocol/graph-node.git # change this: but for the moment we have to go on the branch: filipe/test-run
+cargo build
+GRAPH_LOG=trace cargo run -- --config  ../../streamingfast/graph-node-dev/config/eth-mainnet-substreams.toml --ipfs "localhost:5001"
+# for the above command, put the path to the eth-mainnet-substreams.toml file
+```
+
+#### In a separate terminal, run resolve script
+```bash
+cd substreams/ethereum
+../../resolve.sh mainnet-network.yaml schema.graphql 
+```
+The resolve command will generate an `ipfs` link, you can follow the instructions outputted after successfully running the resolve script. 
+
+#### See what is happening in the firehose and in graph-node
+Now you can check what is happening in the terminals containing the `firehose` and `graph-node`.  
