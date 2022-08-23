@@ -33,15 +33,15 @@ fn graph_out(
     };
 
     out.entity_changes.push(EntityChange {
-        entity: "block".to_string(),
+        entity: "Block".to_string(),
         id: string_field_value!(blk_hash),
         ordinal: 1,
         operation: Operation::Create as i32,
         fields: vec![
             new_field!("id", FieldType::String, string_field_value!(blk_hash)),
-            new_field!("parent_hash", FieldType::Bytes, parent_hash.to_vec()),
+            new_field!("parentHash", FieldType::Bytes, parent_hash.to_vec()),
             new_field!("number", FieldType::Int, int_field_value!(blk.number)),
-            new_field!("tx_count", FieldType::Bigint, big_int_field_value!(tx_count)),
+            new_field!("txCount", FieldType::Bigint, big_int_field_value!(tx_count)),
             new_field!("size", FieldType::Bigdecimal, big_decimal_field_value!(size)),
         ],
     });
