@@ -1,0 +1,29 @@
+specVersion: 0.0.2
+description: NEAR Receipts Indexing
+repository: git@github.com:streamingfast/graph-node-dev.git
+schema:
+  file: ./gql/receipts.graphql
+dataSources:
+  - kind: near
+    name: receipts
+    network: near-testnet
+    source:
+      account: 'aurora'
+      startBlock: 50736512
+    mapping:
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      file: ./src/receipts.ts
+      entities:
+        - ReceiptEvent
+        - ExecutionOutcome
+        - CreateAccountActionEvent
+        - DeployContractActionEvent
+        - FunctionCallActionEvent
+        - TransferActionEvent
+        - StakeActionEvent
+        - AddKeyActionEvent
+        - DeleteKeyActionEvent
+        - DeleteAccountActionEvent
+      receiptHandlers:
+        - handler: handleReceipt

@@ -1,20 +1,20 @@
 extern crate core;
 
-mod pb;
 mod macros;
+mod pb;
 
-use std::ops::Mul;
-use crate::pb::network::{EntitiesChanges, EntityChange, entity_change::{Operation}, Field, field::{Type as FieldType} };
-use std::str::FromStr;
+use crate::pb::network::{
+    entity_change::Operation, field::Type as FieldType, EntitiesChanges, EntityChange, Field,
+};
 use bigdecimal::BigDecimal;
-use substreams::{log, errors::{ Error}, Hex};
-use substreams_ethereum::{pb::eth as ethpb};
-use num_bigint::{BigInt};
+use num_bigint::BigInt;
+use std::ops::Mul;
+use std::str::FromStr;
+use substreams::{errors::Error, log, Hex};
+use substreams_ethereum::pb::eth as ethpb;
 
 #[substreams::handlers::map]
-fn graph_out(
-    blk: ethpb::v1::Block,
-) -> Result<EntitiesChanges, Error> {
+fn graph_out(blk: ethpb::v2::Block) -> Result<EntitiesChanges, Error> {
     log::info!("processing block: {}", blk.number);
 
     let blk_hash = Hex(&blk.hash).to_string();
@@ -42,7 +42,11 @@ fn graph_out(
             new_field!("parentHash", FieldType::Bytes, parent_hash.to_vec()),
             new_field!("number", FieldType::Int, int_field_value!(blk.number)),
             new_field!("txCount", FieldType::Bigint, big_int_field_value!(tx_count)),
-            new_field!("size", FieldType::Bigdecimal, big_decimal_field_value!(size)),
+            new_field!(
+                "size",
+                FieldType::Bigdecimal,
+                big_decimal_field_value!(size)
+            ),
         ],
     });
     Ok(out)

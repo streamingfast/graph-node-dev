@@ -2,7 +2,7 @@ version: "3"
 services:
   ipfs:
     container_name: ipfs-gn
-    image: ipfs/go-ipfs:v0.4.23
+    image: ipfs/kubo:v0.14.0
     ports:
       - "5001:5001"
       - "5002:8080"
@@ -29,7 +29,7 @@ services:
       retries: 15
   pgweb:
     container_name: pgweb-gn
-    image: sosedoff/pgweb:0.11.10
+    image: sosedoff/pgweb:0.11.12
     restart: on-failure
     ports:
       - "8081:8081"
