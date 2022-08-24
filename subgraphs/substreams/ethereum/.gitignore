@@ -1,4 +1,2 @@
-.idea
-/target/
-*.spkg
-*~
+/mainnet-network_resolved.yaml
+/target
