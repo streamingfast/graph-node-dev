@@ -12,7 +12,7 @@ ingestor = "block_ingestor_node"
 shard = "primary"
 protocol = "substreams"
 provider = [
-    { label = "substreams-provider-mainnet", details = { type = "firehose", url = "https://api-unstable.streamingfast.io", token = "$STREAMING_FAST_API_TOKEN" }},
+    { label = "substreams-provider-mainnet", details = { type = "firehose", url = "http://localhost:9001", token = "$STREAMING_FAST_API_TOKEN" }},
 ]
 
 

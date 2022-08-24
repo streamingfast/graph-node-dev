@@ -22,6 +22,6 @@ modules:
     kind: map
     initialBlock: 12369621
     inputs:
-      - source: sf.ethereum.type.v2.Block
+      - source: sf.ethereum.type.v1.Block
     output:
       type: proto:network.types.v1.EntitiesChanges
