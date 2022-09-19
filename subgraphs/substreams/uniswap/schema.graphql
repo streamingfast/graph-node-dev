@@ -1,0 +1,78 @@
+type Block @entity {
+    id: ID!
+    parentHash: Bytes!
+    number: Int!
+    txCount: BigInt!
+    size: BigDecimal!
+}
+
+type Pool @entity {
+    # pool address
+    id: ID!
+    # creation
+    createdAtTimestamp: BigInt!
+    # block pool was created at
+    createdAtBlockNumber: BigInt!
+    # token0
+    token0: String!
+    # token1
+    token1: String!
+    # fee amount
+    feeTier: BigInt!
+    # in range liquidity
+    liquidity: BigInt!
+    # current price tracker
+    sqrtPrice: BigInt!
+    # tracker for global fee growth
+    feeGrowthGlobal0X128: BigInt!
+    # tracker for global fee growth
+    feeGrowthGlobal1X128: BigInt!
+    # token0 per token1
+    token0Price: BigDecimal!
+    # token1 per token0
+    token1Price: BigDecimal!
+    # current tick
+    tick: BigInt
+    # current observation index
+    observationIndex: BigInt!
+    # all time token0 swapped
+    volumeToken0: BigDecimal!
+    # all time token1 swapped
+    volumeToken1: BigDecimal!
+    # all time USD swapped
+    volumeUSD: BigDecimal!
+    # all time USD swapped, unfiltered for unreliable USD pools
+    untrackedVolumeUSD: BigDecimal!
+    # fees in USD
+    feesUSD: BigDecimal!
+    # all time number of transactions
+    txCount: BigInt!
+    # all time fees collected token0
+    collectedFeesToken0: BigDecimal!
+    # all time fees collected token1
+    collectedFeesToken1: BigDecimal!
+    # all time fees collected derived USD
+    collectedFeesUSD: BigDecimal!
+    # total token 0 across all ticks
+    totalValueLockedToken0: BigDecimal!
+    # total token 1 across all ticks
+    totalValueLockedToken1: BigDecimal!
+    # tvl derived ETH
+    totalValueLockedETH: BigDecimal!
+    # tvl USD
+    totalValueLockedUSD: BigDecimal!
+    # TVL derived in USD untracked
+    totalValueLockedUSDUntracked: BigDecimal!
+    # Fields used to help derived relationship
+    liquidityProviderCount: BigInt! # used to detect new exchanges
+    # hourly snapshots of pool data
+    #    poolHourData: [PoolHourData!]! @derivedFrom(field: "pool")
+    # daily snapshots of pool data
+    #    poolDayData: [PoolDayData!]! @derivedFrom(field: "pool")
+    # derived fields
+    #    mints: [Mint!]! @derivedFrom(field: "pool")
+    #    burns: [Burn!]! @derivedFrom(field: "pool")
+    #    swaps: [Swap!]! @derivedFrom(field: "pool")
+    #    collects: [Collect!]! @derivedFrom(field: "pool")
+    #    ticks: [Tick!]! @derivedFrom(field: "pool")
+}

@@ -1,0 +1,242 @@
+syntax = "proto3";
+
+package uniswap.types.v1;
+
+message ERC20Tokens {
+  repeated ERC20Token tokens = 1;
+}
+
+message ERC20Token {
+  string address = 1;
+  string name = 2;
+  string symbol = 3;
+  uint64 decimals = 4;
+  string total_supply = 5;
+  repeated string whitelist_pools = 6;
+}
+
+message Liquidity {
+  string pool_address = 1;
+  string value = 2; // BigDecimal
+}
+
+message Pools {
+  repeated Pool pools =1;
+}
+
+message Pool {
+  string address = 1;
+  string created_at_timestamp = 3; // BigInt
+  string created_at_block_number = 4;  // BigInt
+  ERC20Token token0 = 5;
+  ERC20Token token1 = 6;
+  uint32 fee_tier = 7;  // BigInt
+
+  // internals
+  int32 tick_spacing = 30;
+  uint64 log_ordinal = 31;
+  string transaction_id = 32;
+  bool ignore_pool = 33;
+}
+
+message PoolSqrtPrices {
+  repeated PoolSqrtPrice pool_sqrt_prices = 1;
+}
+
+message PoolSqrtPrice {
+  string pool_address = 1;
+  uint64 ordinal = 2;
+  string sqrt_price = 3; //BigInt
+  string tick = 4; // BigInt
+}
+
+message Events {
+  repeated Event events = 1;
+}
+
+message Event {
+  oneof type {
+    Swap swap = 1;
+    Burn burn = 2;
+    Mint mint = 3;
+  }
+  uint64 log_ordinal = 100;
+  uint64 log_index = 101;
+  string pool_address = 102;
+  string token0 = 103;
+  string token1 = 104;
+  string fee = 105;
+  string transaction_id = 106;
+  uint64 timestamp = 107;
+  uint64 created_at_block_number = 108;
+}
+
+message Swap {
+  string sender = 1;
+  string recipient = 2;
+  string origin = 3;
+  string amount_0 = 4;
+  string amount_1 = 5;
+  string sqrt_price = 6;
+  string liquidity = 7;
+  int32 tick = 8;
+}
+
+message Burn {
+  string owner = 1;
+  string origin = 2;
+  string amount = 3;
+  string amount_0 = 4;
+  string amount_1 = 5;
+  int32 tick_lower = 6;
+  int32 tick_upper = 7;
+}
+
+message Mint {
+  string owner = 1;
+  string sender = 2;
+  string origin = 3;
+  string amount_0 = 4;
+  string amount_1 = 5;
+  int32 tick_lower = 6;
+  int32 tick_upper = 7;
+  string amount = 8;
+}
+
+message EventAmounts {
+  repeated EventAmount event_amounts =1;
+}
+
+message EventAmount {
+  string pool_address = 1;
+  string token0_addr = 2;
+  string amount0_value = 3;
+  string token1_addr = 4;
+  string amount1_value = 5;
+
+  // internals
+  uint64 log_ordinal = 30;
+}
+
+message PoolLiquidities {
+  repeated PoolLiquidity pool_liquidities = 1;
+}
+
+message PoolLiquidity {
+  string pool_address = 1;
+  string liquidity = 2;
+
+  // internals
+  uint64 log_ordinal = 30;
+}
+
+message Ticks {
+  repeated Tick ticks = 1;
+}
+
+message Tick {
+  string id = 1;
+  string pool_address = 2;
+  string idx = 3; //BigInt
+  string price0 = 4; //BigDecimal
+  string price1 = 5; //BigDecimal
+  uint64 created_at_timestamp = 6;
+  uint64 created_at_block_number = 7;
+  string fee_growth_outside_0X_128 = 8; //BigInt
+  string fee_growth_outside_1X_128 = 9; //BigInt
+
+  // internals
+  uint64 log_ordinal = 10;
+  string amount = 11; //BigInt
+  enum Type {
+    TYPE_UNSET = 0; // Protobuf default should not be used, this is used so that the consume can ensure that the value was actually specified
+    LOWER = 1;
+    UPPER = 2;
+  };
+  enum Origin {
+    ORIGIN_UNSET = 0; // Protobuf default should not be used, this is used so that the consume can ensure that the value was actually specified
+    MINT = 1;
+    BURN = 2;
+  };
+  Origin origin = 12;
+  Type type = 13;
+}
+
+message Fees {
+  repeated Fee fees = 1;
+}
+
+message Fee {
+  uint32 fee = 1;
+  int32 tick_spacing = 2;
+}
+
+message Flashes {
+  repeated Flash flashes = 1;
+}
+
+message Flash {
+  string sender = 1;
+  string recipient = 2;
+  uint64 amount_0 = 3;
+  uint64 amount_1 = 4;
+  uint64 paid_0 = 5;
+  uint64 paid_1 = 6;
+
+  string transaction_id = 7;
+  uint64 log_ordinal = 8;
+}
+
+message EntitiesChanges {
+  bytes block_id = 1;
+  uint64 block_number = 2;
+  bytes prev_block_id = 3;
+  uint64 prev_block_number = 4;
+  repeated EntityChange entityChanges = 5;
+}
+
+message EntityChange {
+  string entity = 1;
+  bytes id = 2;
+  uint64 ordinal = 3;
+  enum Operation {
+    UNSET = 0;    // Protobuf default should not be used, this is used so that the consume can ensure that the value was actually specified
+    CREATE = 1;
+    UPDATE = 2;
+    DELETE = 3;
+  }
+  Operation operation = 4;
+  repeated Field fields = 5;
+}
+
+message Field {
+  string name = 1;
+  enum Type {
+    UNSET = 0;    // Protobuf default should not be used, this is used so that the consume can ensure that the value was actually specified
+    BIGDECIMAL = 1;
+    BIGINT = 2;
+    INT = 3; // int32
+    BYTES = 4;
+    STRING = 5;
+  }
+  Type value_type = 2;
+  bytes new_value = 3;
+  bool new_value_null = 4;
+  bytes old_value = 5;
+  bool old_value_null = 6;
+}
+
+message Transactions {
+  repeated Transaction transactions = 1;
+}
+
+message Transaction {
+  string id = 1;
+  uint64 block_number = 2; //BigInt
+  uint64 timestamp = 3; //BigInt
+  uint64 gas_used = 4; // BigInt
+  string gas_price = 5; //BigInt
+  
+  // internals
+  uint64 log_ordinal = 6;
+}
