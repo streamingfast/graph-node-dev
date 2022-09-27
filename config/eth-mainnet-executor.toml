@@ -1,0 +1,22 @@
+[general]
+
+[store]
+[store.primary]
+connection = "postgresql://graph-node:let-me-in@localhost:5432/graph-node"
+weight = 1
+pool_size = 10
+
+[chains]
+ingestor = "block_ingestor_node"
+[chains.eth-mainnet]
+shard = "primary"
+protocol = "ethereum"
+provider = [
+  { label = "ingestor", url = "$ETH_MAINNET_RPC", features = [ ] },
+  { label = "calls", url = "$SF_EVM_EXECUTOR_RPC", features = [ "archive" ] },
+]
+
+[deployment]
+[[deployment.rule]]
+shard = "primary"
+indexers = [ "default" ]
