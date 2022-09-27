@@ -1,8 +1,0 @@
-type Payment @entity {
-  id: ID!
-
-  to: String!
-  from: String!
-  value: BigInt!
-  input: Bytes!
-}
