@@ -64,8 +64,8 @@ main() {
   echo "Run the following command to upload to your graph-node:"
   echo ""
 
-  echo curl -H '"Content-Type: application/json"' -d '"{\"id\":\"2.0\",\"method\":\"subgraph_create\",\"params\":{\"name\":\"'$resolved_manifest_file_cid'\"}}"' http://127.0.0.1:8020
-  echo curl -H '"Content-Type: application/json"' -d '"{\"id\":\"2.0\",\"method\":\"subgraph_deploy\",\"params\":{\"name\":\"'$resolved_manifest_file_cid'\",\"ipfs_hash\":\"'$resolved_manifest_file_cid'\",\"version_label\": \"1\"}}"' http://127.0.0.1:8020
+  echo curl -H '"Content-Type: application/json"' -d '"{\"jsonrpc\":\"2.0\", \"id\":\"2.0\",\"method\":\"subgraph_create\",\"params\":{\"name\":\"'$resolved_manifest_file_cid'\"}}"' http://127.0.0.1:8020
+  echo curl -H '"Content-Type: application/json"' -d '"{\"jsonrpc\":\"2.0\", \"id\":\"2.0\",\"method\":\"subgraph_deploy\",\"params\":{\"name\":\"'$resolved_manifest_file_cid'\",\"ipfs_hash\":\"'$resolved_manifest_file_cid'\",\"version_label\": \"1\"}}"' http://127.0.0.1:8020
 }
 
 ipfs_upload() {

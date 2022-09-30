@@ -3,7 +3,7 @@ description: Tracking Blocks And Transactions on ETH Mainnet network
 repository: https://github.com/streamingfast/graph-node-dev.git
 schema:
   file:
-    /: /ipfs/QmX4qAD3pG6XW3TiHsZfrvDbKZweoVnDY2rej5p4WJB3qa
+    /: /ipfs/QmSnfA3cnuopu97PGGheGAyrHvoxdMnWZVcms4mq6ANbz1
 
 dataSources:
   - kind: substreams
@@ -11,9 +11,9 @@ dataSources:
     network: mainnet
     source:
       package:
-        moduleName: map_pool_entities
+        moduleName: graph_out
         file:
-          /: /ipfs/QmcxXtFuJU5UuSe6GaXjiaNoWtbd7dYcBxizEhU1TqHqth
+          /: /ipfs/QmVzk9KmSLJb8q4uyxRoz9uajYQL5La5Wx2hSKWZYVP7Di
     mapping:
       kind: substreams/graph-entities
       apiVersion: 0.0.5
