@@ -18,10 +18,19 @@ binaries:
     file: target/wasm32-unknown-unknown/release/substreams_network_v1.wasm
 
 modules:
+  - name: dummy_store
+    kind: store
+    updatePolicy: set
+    valueType: string
+    initialBlock: 12369621
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+
   - name: graph_out
     kind: map
     initialBlock: 12369621
     inputs:
+      - store: dummy_store
       - source: sf.ethereum.type.v2.Block
     output:
       type: proto:network.types.v1.EntitiesChanges
