@@ -16,17 +16,9 @@ use substreams::store::{StoreSet, StoreGet};
 use substreams_ethereum::pb::eth as ethpb;
 use crate::ethpb::v2::{Block};
 
-#[substreams::handlers::store]
-pub fn dummy_store(blk: Block, output: StoreSet) {
-    output.set(
-        1,
-        format!("key:{}", blk.number),
-        &Vec::from("dummy".to_string()),
-    )
-}
 
 #[substreams::handlers::map]
-fn graph_out(_dummy_store: StoreGet, blk: Block) -> Result<EntitiesChanges, Error> {
+fn graph_out(blk: Block) -> Result<EntitiesChanges, Error> {
     log::info!("processing block: {}", blk.number);
 
     let blk_hash = Hex(&blk.hash).to_string();
@@ -64,3 +56,8 @@ fn graph_out(_dummy_store: StoreGet, blk: Block) -> Result<EntitiesChanges, Erro
     Ok(out)
 }
 
+
+#[substreams::handlers::store]
+pub fn dummy_store(entitiesChanges: EntitiesChanges) {
+  // does nothing
+}
