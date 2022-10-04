@@ -64,7 +64,7 @@ main() {
 }
 
 deploy_from_manifest() {
-  path  ="$1"
+  path="$1"
 
   chain=`chain $path`
   deployment="`deployment_name $path $suffix`"

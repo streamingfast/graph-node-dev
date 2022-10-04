@@ -11,10 +11,14 @@ use num_bigint::BigInt;
 use std::ops::Mul;
 use std::str::FromStr;
 use substreams::{errors::Error, log, Hex};
+use substreams::store::{StoreSet, StoreGet};
+
 use substreams_ethereum::pb::eth as ethpb;
+use crate::ethpb::v2::{Block};
+
 
 #[substreams::handlers::map]
-fn graph_out(blk: ethpb::v2::Block) -> Result<EntitiesChanges, Error> {
+fn graph_out(blk: Block) -> Result<EntitiesChanges, Error> {
     log::info!("processing block: {}", blk.number);
 
     let blk_hash = Hex(&blk.hash).to_string();
@@ -50,4 +54,10 @@ fn graph_out(blk: ethpb::v2::Block) -> Result<EntitiesChanges, Error> {
         ],
     });
     Ok(out)
+}
+
+
+#[substreams::handlers::store]
+pub fn dummy_store(entitiesChanges: EntitiesChanges) {
+  // does nothing
 }

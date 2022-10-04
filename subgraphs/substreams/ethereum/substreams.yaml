@@ -1,7 +1,7 @@
 specVersion: v0.1.0
 package:
   name: ethereum_network_v1
-  version: v0.1.0
+  version: v0.2.0
   url: https://github.com/streamingfast/substreams-uniswap-v3
   doc: |
     These substream modules compose the Ethereum Network substreams.
@@ -20,8 +20,15 @@ binaries:
 modules:
   - name: graph_out
     kind: map
-    initialBlock: 12369621
+    initialBlock: 1
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
       type: proto:network.types.v1.EntitiesChanges
+
+  - name: dummy_store
+    kind: store
+    updatePolicy: set
+    valueType: string
+    inputs:
+      - map: graph_out
