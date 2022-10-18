@@ -1,10 +1,10 @@
 specVersion: v0.1.0
 package:
   name: ethereum_network_v1
-  version: v0.2.0
+  version: v0.2.1
   url: https://github.com/streamingfast/substreams-uniswap-v3
   doc: |
-    These substream modules compose the Ethereum Network substreams.
+    These Substreams modules compose the Ethereum Network substreams.
 
 protobuf:
   files:
@@ -15,7 +15,7 @@ protobuf:
 binaries:
   default:
     type: wasm/rust-v1
-    file: target/wasm32-unknown-unknown/release/substreams_network_v1.wasm
+    file: ../../../target/wasm32-unknown-unknown/release/substreams_network_v1.wasm
 
 modules:
   - name: graph_out

@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    "subgraphs/substreams/ethereum",
+]
+
+[profile.release]
+lto = true
+opt-level = 's'
+strip = "debuginfo"
