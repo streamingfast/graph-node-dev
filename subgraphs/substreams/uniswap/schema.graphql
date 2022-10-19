@@ -66,7 +66,7 @@ type Token @entity {
     # derived price in ETH
     derivedETH: BigDecimal!
     # pools token is in that are white listed for USD pricing
-#    whitelistPools: [Pool!]!
+    whitelistPools: [Pool!]!
     # derived fields
     #    tokenDayData: [TokenDayData!]! @derivedFrom(field: "token")
 }
@@ -224,7 +224,7 @@ type Position @entity {
     # upper tick of the position
     tickUpper: Tick!
     # total position liquidity
-    liquidity: BigDecimal! # TODO: Originally this was BigInt
+    liquidity: BigDecimal! # Originally this was BigInt
     # amount of token 0 ever deposited to position
     depositedToken0: BigDecimal!
     # amount of token 1 ever deposited to position
@@ -258,7 +258,7 @@ type PositionSnapshot @entity {
     # timestamp of block in which the snap was created
     timestamp: BigInt!
     # total position liquidity
-    liquidity: BigInt!
+    liquidity: BigDecimal! # Originally this was BigInt
     # amount of token 0 ever deposited to position
     depositedToken0: BigDecimal!
     # amount of token 1 ever deposited to position
@@ -292,11 +292,11 @@ type Mint @entity {
     # allow indexing by tokens
     token1: Token!
     # owner of position where liquidity minted to
-    owner: String! # FIXME: this should be bytes
+    owner: Bytes!
     # the address that minted the liquidity
-    sender: String # FIXME: this should be bytes
+    sender: Bytes
     # txn origin
-    origin: String! # the EOA that initiated the txn FIXME: this should be bytes
+    origin: Bytes! # the EOA that initiated the txn
     # amount of liquidity minted
     amount: BigInt!
     # amount of token 0 minted
@@ -327,9 +327,9 @@ type Burn @entity {
     # need this to pull recent txns for specific token or pool
     timestamp: BigInt!
     # owner of position where liquidity was burned
-    owner: String # FIXME: this should be bytes
+    owner: Bytes
     # txn origin
-    origin: String! # the EOA that initiated the txn FIXME: this should be bytes
+    origin: Bytes! # the EOA that initiated the txn
     # amount of liquidity burned
     amount: BigInt!
     # amount of token 0 burned
@@ -360,11 +360,11 @@ type Swap @entity {
     # allow indexing by tokens
     token1: Token!
     # sender of the swap
-    sender: String! # FIXME: this should be bytes
+    sender: Bytes!
     # recipient of the swap
-    recipient: String! # FIXME: this should be bytes
+    recipient: Bytes!
     # txn origin
-    origin: String! # the EOA that initiated the txn FIXME: this should be bytes
+    origin: Bytes! # the EOA that initiated the txn
     # delta of token0 swapped
     amount0: BigDecimal!
     # delta of token1 swapped
