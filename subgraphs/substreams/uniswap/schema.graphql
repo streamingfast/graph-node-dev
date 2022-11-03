@@ -212,7 +212,7 @@ type Position @entity {
     # NFT token id
     id: ID!
     # owner of the NFT
-    owner: String! # FIXME: this should be bytes
+    owner: Bytes! # FIXME: this should be bytes
     # pool position is within
     pool: Pool!
     # allow indexing by tokens
@@ -248,7 +248,7 @@ type PositionSnapshot @entity {
     # <NFT token id>#<block number>
     id: ID!
     # owner of the NFT
-    owner: String! # FIXME: this should be bytes
+    owner: Bytes! # FIXME: this should be bytes
     # pool the position is within
     pool: Pool!
     # position of which the snap was taken of
