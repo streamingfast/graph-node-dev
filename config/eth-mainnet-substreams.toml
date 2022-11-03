@@ -10,11 +10,10 @@ pool_size = 10
 ingestor = "block_ingestor_node"
 [chains.mainnet]
 shard = "primary"
-protocol = "substreams"
 provider = [
-    { label = "substreams-provider-mainnet", details = { type = "firehose", url = "https://api-dev.streamingfast.io", token = "$STREAMING_FAST_API_TOKEN" }},
+    { label = "peering", url = "$ETH_MAINNET_RPC", features = [ "archive" ] },
+    { label = "substreams-provider-mainnet", details = { type = "substreams", url = "https://mainnet.eth.streamingfast.io:443", token = "$STREAMING_FAST_API_TOKEN" }},
 ]
-
 
 [deployment]
 [[deployment.rule]]

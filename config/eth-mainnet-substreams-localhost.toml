@@ -15,7 +15,6 @@ provider = [
     { label = "substreams-provider-mainnet", details = { type = "substreams", url = "http://localhost:9000", token = "$STREAMING_FAST_API_TOKEN" }},
 ]
 
-
 [deployment]
 [[deployment.rule]]
 shard = "primary"
