@@ -26,7 +26,7 @@ main() {
 
   manifest_dir=`pwd`
   echo "Packing Substreams"
-  spkg_file='uniswap-v3-v0.1.2-beta.spkg'
+  spkg_file='uniswap-v3-v0.1.3-beta.spkg'
   echo "Substreams spkg is ready $spkg_file"
   echo ""
 
