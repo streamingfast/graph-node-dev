@@ -1,0 +1,22 @@
+[general]
+
+[store]
+[store.primary]
+connection = "postgresql://graph-node:let-me-in@localhost:5432/graph-node"
+weight = 1
+pool_size = 10
+
+[chains]
+ingestor = "block_ingestor_node"
+[chains.mainnet]
+shard = "primary"
+protocol = "ethereum"
+provider = [
+  { label = "substreams", details = { type = "substreams", url = "http://localhost:13042" }},
+  { label = "peering", url = "http://localhost:8545", features = [] },
+]
+
+[deployment]
+[[deployment.rule]]
+shard = "primary"
+indexers = [ "default" ]
