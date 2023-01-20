@@ -54,12 +54,10 @@ usage_error() {
   exit ${exit_code:-1}
 }
 
-graphman_remove() {
+graphman_drop() {
   check_graphman
 
-  $GRAPHMAN --config "$ROOT/config/graphman.toml" remove "$1"
-  $GRAPHMAN --config "$ROOT/config/graphman.toml" unused record
-  $GRAPHMAN --config "$ROOT/config/graphman.toml" unused remove
+  $GRAPHMAN --config "$ROOT/config/graphman.toml" drop --force "$1"
 }
 
 check_graphman() {

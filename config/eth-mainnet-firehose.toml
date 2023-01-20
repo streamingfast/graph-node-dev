@@ -13,7 +13,6 @@ shard = "primary"
 protocol = "ethereum"
 provider = [
   { label = "firehose", details = { type = "firehose", url = "$FIREHOSE_ENDPOINT", token = "$STREAMING_FAST_API_TOKEN", features = [ "filters" ] }},
-  { label = "peering", url = "$ETH_MAINNET_RPC", features = [] },
 ]
 
 [deployment]

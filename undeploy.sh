@@ -31,7 +31,7 @@ main() {
   fi
 
   if [[ "$name" == true ]]; then
-      graphman_remove "$1"
+      graphman_drop "$1"
   else
       path="$1"; shift
       if [[ ! -f "./$path" ]]; then
@@ -39,7 +39,7 @@ main() {
       fi
 
       deployment="`deployment_name $path $suffix`"
-      graphman_remove "$deployment"
+      graphman_drop "$deployment"
   fi
 }
 

@@ -53,7 +53,7 @@ main() {
   fi
 
   if [[ $clean == true ]]; then
-    graphman_remove "$subgraphName"
+    graphman_drop "$subgraphName"
   fi
 
   if [[ "$using_path" == "true" ]]; then
