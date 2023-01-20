@@ -8,12 +8,12 @@ pool_size = 10
 
 [chains]
 ingestor = "block_ingestor_node"
-[chains.eth-mainnet]
+[chains.mainnet]
 shard = "primary"
 protocol = "ethereum"
 provider = [
-  { label = "firehose", details = { type = "firehose", url = "https://api-dev.streamingfast.io", token = "$STREAMING_FAST_API_TOKEN", features = [ "filters" ] }},
-  { label = "peering", url = "$STREAMING_FAST_ETH_MAINNET_RPC", features = [ "archive" ] },
+  { label = "firehose", details = { type = "firehose", url = "$FIREHOSE_ENDPOINT", token = "$STREAMING_FAST_API_TOKEN", features = [ "filters" ] }},
+  { label = "peering", url = "$ETH_MAINNET_RPC", features = [] },
 ]
 
 [deployment]

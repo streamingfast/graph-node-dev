@@ -8,7 +8,7 @@ pool_size = 10
 
 [chains]
 ingestor = "block_ingestor_node"
-[chains.eth-mainnet]
+[chains.mainnet]
 shard = "primary"
 protocol = "ethereum"
 provider = [

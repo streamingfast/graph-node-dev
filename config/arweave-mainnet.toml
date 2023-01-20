@@ -12,7 +12,7 @@ ingestor = "block_ingestor_node"
 shard = "primary"
 protocol = "arweave"
 provider = [
-  { label = "arweave-mainnet", details = { type = "firehose", url = "https://mainnet.arweave.streamingfast.io", token = "$STREAMING_FAST_API_TOKEN" }},
+  { label = "arweave-mainnet", details = { type = "firehose", url = "$FIREHOSE_ENDPOINT", token = "$STREAMING_FAST_API_TOKEN" }},
 ]
 
 [deployment]
