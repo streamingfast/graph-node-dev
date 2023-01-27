@@ -12,7 +12,7 @@ ingestor = "block_ingestor_node"
 shard = "primary"
 protocol = "ethereum"
 provider = [
-  { label = "ingestor", url = "$ETH_MAINNET_RPC", features = [ "archive" ] },
+  { label = "ingestor", url = "$ETH_MAINNET_RPC", features = [] },
   { label = "calls", url = "$SF_EVM_EXECUTOR_RPC", features = [ "archive", "call_only" ] },
 ]
 
