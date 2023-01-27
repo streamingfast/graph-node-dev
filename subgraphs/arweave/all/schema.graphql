@@ -1,0 +1,24 @@
+type Block @entity {
+  id: ID!
+  block_id: String!
+  height: BigInt!
+  previous_id: String
+}
+
+type Transaction @entity {
+  id: ID!
+  # tx_id is exactly like id, but in string form base64 encoded
+  tx_id: String!
+
+  block_height: BigInt!
+  block_id: String!
+  last_tx: String!
+  owner: String!
+  data: Bytes!
+  data_root: String!
+  data_size: Bytes!
+  target: Bytes!
+  quantity: Bytes!
+  signature: Bytes!
+  reward: Bytes!
+}
