@@ -4,7 +4,10 @@ ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source "$ROOT/library.sh"
 
-graph="node_modules/.bin/graph"
+graph="graph"
+if ! command -v "$graph" &> /dev/null; then
+  graph="node_modules/.bin/graph"
+fi
 
 main() {
   pushd "$ROOT" &> /dev/null
@@ -46,7 +49,7 @@ build() {
       execution_error "You provided network '$network' argument but file '$networkFile' was not found, create it with correct parameters"
     fi
 
-    args="--network=$network --networkFile=$networkFile"
+    args="--network=$network --network-file=$networkFile"
   fi
 
   $graph build "$path" --ipfs http://localhost:5001 $args

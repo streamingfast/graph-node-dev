@@ -48,7 +48,7 @@ main() {
     rm -rf build
 
     if [[ $build == true ]]; then
-      ./build.sh "$path"
+      ./build.sh "$path" "$network"
     fi
   fi
 

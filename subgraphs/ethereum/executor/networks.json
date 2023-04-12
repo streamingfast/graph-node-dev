@@ -1,15 +1,22 @@
 {
   "mainnet": {
-    "blocks": {
+    "transfer": {
       "startBlock": 14000000,
       "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
     }
   },
 
   "goerli": {
-    "blocks": {
+    "transfer": {
       "startBlock": 6000000,
       "address": "0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6"
+    }
+  },
+
+  "matic": {
+    "transfer": {
+      "startBlock": 32233132,
+      "address": "0xDb46d1Dc155634FbC732f92E853b10B288AD5a1d"
     }
   }
 }
