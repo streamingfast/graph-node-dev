@@ -11,7 +11,8 @@ ingestor = "block_ingestor_node"
 [chains.mainnet]
 shard = "primary"
 provider = [
-    { label = "peering", url = "$ETH_MAINNET_RPC", features = [ "archive" ] },
+    { label = "bootstrap", details = { type = "web3", url = "$RPC_NODE", features = [ "archive" ] }},
+    { label = "firehose", details = { type = "firehose", url = "$SUBSTREAMS_ENDPOINT", token = "$STREAMING_FAST_API_TOKEN" }},
     { label = "substreams", details = { type = "substreams", url = "$SUBSTREAMS_ENDPOINT", token = "$STREAMING_FAST_API_TOKEN" }},
 ]
 

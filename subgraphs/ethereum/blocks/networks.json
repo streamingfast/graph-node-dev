@@ -1,0 +1,19 @@
+{
+  "mainnet": {
+    "all_block": {
+      "startBlock": 14000000
+    }
+  },
+
+  "goerli": {
+    "all_block": {
+      "startBlock": 6000000
+    }
+  },
+
+  "matic": {
+    "all_block": {
+      "startBlock": 32233132
+    }
+  }
+}

@@ -12,7 +12,7 @@ ingestor = "block_ingestor_node"
 shard = "primary"
 protocol = "ethereum"
 provider = [
-  { label = "peering", url = "$STREAMING_FAST_ETH_MAINNET_RPC", features = [ "archive", "traces" ] },
+  { label = "peering", url = "$RPC_NODE", features = [ "archive", "traces" ] },
 ]
 
 [deployment]

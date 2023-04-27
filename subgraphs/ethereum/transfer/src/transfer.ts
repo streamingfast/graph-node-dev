@@ -1,6 +1,5 @@
 import { Transfer, TransferCall } from "../generated/transfer/transfer"
-import { Block, Payment } from "../generated/schema"
-import { ethereum } from "@graphprotocol/graph-ts"
+import { Payment } from "../generated/schema"
 
 export function handleTransferEvent(event: Transfer): void {
   let payment = new Payment(event.block.number.toString())
@@ -17,12 +16,4 @@ export function handleTransferCall(call: TransferCall): void {
   payment.to = call.inputs._to.toHex()
   payment.value = call.inputs._value
   payment.save()
-}
-
-export function handleBlock(block: ethereum.Block): void {
-  let id = block.hash.toHex()
-
-  let entity = new Block(id)
-  entity.number = block.number
-  entity.save()
 }
