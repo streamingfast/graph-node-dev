@@ -12,8 +12,8 @@ ingestor = "block_ingestor_node"
 shard = "primary"
 provider = [
     { label = "bootstrap", details = { type = "web3", url = "$RPC_NODE", features = [ "archive" ] }},
-    { label = "firehose", details = { type = "firehose", url = "$SUBSTREAMS_ENDPOINT", token = "$STREAMING_FAST_API_TOKEN" }},
-    { label = "substreams", details = { type = "substreams", url = "$SUBSTREAMS_ENDPOINT", token = "$STREAMING_FAST_API_TOKEN" }},
+    { label = "firehose", details = { type = "firehose", url = "$SUBSTREAMS_ENDPOINT", token = "$FIREHOSE_API_TOKEN" }},
+    { label = "substreams", details = { type = "substreams", url = "$SUBSTREAMS_ENDPOINT", token = "$SUBSTREAMS_API_TOKEN" }},
 ]
 
 [deployment]
